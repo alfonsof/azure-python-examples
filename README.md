@@ -4,7 +4,7 @@ This repo contains Python code examples on Microsoft Azure.
 
 These examples show how to use Python 3 and Azure SDK for Python in order to manage services on Microsoft Azure.
 
-Azure SDK for Python allow Python developers to write software that makes use of Azure services like Virtual Machines and Blob storage.
+Azure SDK for Python allows Python developers to write software that makes use of Azure services like Virtual Machines and Blob storage.
 
 ## Quick start
 
