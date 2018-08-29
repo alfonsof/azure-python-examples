@@ -20,6 +20,8 @@ The code for the samples is contained in individual folders on this repository. 
 
 * [azureblobstoragedelete](/azureblobstoragedelete) - Azure Blob Storage Delete: Example of how to handle Azure Blob Storage and delete a Blob Storage container in an Azure storage account.
 
+* [azureblobstoragelist](/azureblobstoragelist) - Azure Blob Storage List: Example of how to handle Azure Blob Storage and list the blobs in a Blob Storage container in an Azure storage account.
+
 For instructions on running the code, please consult the README in each folder.
 
 ## License
