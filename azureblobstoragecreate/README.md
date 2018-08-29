@@ -100,7 +100,7 @@ Create a new Blob Storage container in an Azure storage account.
   9. Specify a new resource group or select an existing resource group.
   10. Click Create to create the storage account.
 
-* Configure your Azure Storage authentication information for the application.
+* Configure your Azure Storage connection string.
 
   The authentication information is required for your application to access data in an Azure Storage account at runtime.
 
