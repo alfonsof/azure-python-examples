@@ -40,7 +40,7 @@ def main():
   container_name = args[0]
   print('Container name: ' + container_name)
 
-  # Read storage account authentication details
+  # Read storage authentication information
   config_dict = loadcfg()
   cfg_account_name = config_dict['accountname']
   cfg_account_key = config_dict['accountkey']

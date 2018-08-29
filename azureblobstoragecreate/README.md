@@ -1,4 +1,4 @@
-# Azure Blob Storage Create Container Python example
+# Azure Blob Storage Create Python example
 
 This folder contains a Python application example that handles Blob storage on Microsoft Azure.
 
