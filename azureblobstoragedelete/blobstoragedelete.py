@@ -49,13 +49,13 @@ def main():
   block_blob_service = BlockBlobService(account_name=cfg_account_name, account_key=cfg_account_key)
 
   try:
-    print('Deleting container...')
+    print('Deleting container ...')
     # Delete the container
     if block_blob_service.exists(container_name):
       block_blob_service.delete_container(container_name)
       print('\nDeleted')
     else:
-      print('\nContainer "' + container_name + '" does NOT exist.')
+      print('\nError: Blob container "' + container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)

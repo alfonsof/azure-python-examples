@@ -49,7 +49,7 @@ def main():
   block_blob_service = BlockBlobService(account_name=cfg_account_name, account_key=cfg_account_key)
 
   try:
-    print('Creating container...')
+    print('Creating container ...')
     # Create the container
     block_blob_service.create_container(container_name)
     print('\nCreated')

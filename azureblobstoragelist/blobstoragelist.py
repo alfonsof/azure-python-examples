@@ -58,7 +58,7 @@ def main():
         print('- Blob name: ' + blob.name)
         print('       size: ', props.content_length)
     else:
-      print('\nContainer "' + container_name + '" does NOT exist.')
+      print('\nError: Blob container "' + container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)

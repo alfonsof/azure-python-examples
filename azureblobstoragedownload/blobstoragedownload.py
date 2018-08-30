@@ -63,9 +63,9 @@ def main():
         block_blob_service.get_blob_to_path(container_name, blob_name, local_file_name)
         print("\nDownloaded")
       else:
-        print('\nError: Blob "' + blob_name + '" does NOT exist!!')
+        print('\nError: Blob "' + blob_name + '" does NOT exist.')
     else:
-      print('\nError: Blob container "' + container_name + '" does NOT exist!!')
+      print('\nError: Blob container "' + container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)
