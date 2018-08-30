@@ -1,8 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# blobstoragelist.py
+# blobstoragecopy.py
 # It is an example that handles Blob Storage containers on Microsoft Azure.
-# Copy a blob from a Blob Storage container to another Blob Storage container.
+# Copy a Blob from a Blob Storage container to another Blob Storage container.
 # You must provide 3 parameters:
 # SOURCE_CONTAINER      = Source container name
 # SOURCE_BLOB           = Source blob name
