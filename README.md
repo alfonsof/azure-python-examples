@@ -26,6 +26,8 @@ The code for the samples is contained in individual folders on this repository. 
 
 * [azureblobstorageupload](/azureblobstorageupload) - Azure Blob Storage Upload: Example of how to handle Azure Blob Storage and upload a local file to a Blob Storage container in an Azure storage account.
 
+* [azureblobstoragedownload](/azureblobstoragedownload) - Azure Blob Storage Download: Example of how to handle Azure Blob Storage and Download a file from a Blob Storage container in an Azure storage account.
+
 For instructions on running the code, please consult the README in each folder.
 
 ## License
