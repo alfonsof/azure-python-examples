@@ -54,7 +54,9 @@ def main():
       print('List of blobs in container "'+ container_name + '":')
       blobs_list = block_blob_service.list_blobs(container_name)
       for blob in blobs_list:
-        print("- Blob name: " + blob.name)
+        props = blob.properties
+        print('- Blob name: ' + blob.name)
+        print('       size: ', props.content_length)
     else:
       print('\nContainer "' + container_name + '" does NOT exist.')
   except Exception as e:
