@@ -24,6 +24,8 @@ The code for the samples is contained in individual folders on this repository. 
 
 * [azureblobstoragelistall](/azureblobstoragelistall) - Azure Blob Storage List All: Example of how to handle Azure Blob Storage and List the blobs in all Blob Storage containers in an Azure storage account.
 
+* [azureblobstorageupload](/azureblobstorageupload) - Azure Blob Storage Upload: Example of how to handle Azure Blob Storage and upload a local file to a Blob Storage container in an Azure storage account.
+
 For instructions on running the code, please consult the README in each folder.
 
 ## License
