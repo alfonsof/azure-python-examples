@@ -63,9 +63,9 @@ def main():
         block_blob_service.create_blob_from_path(container_name, blob_name, local_file_name)
         print("\nUploaded")
       else:
-        print('\nLocal file "' + local_file_name + '" does NOT exist.')
+        print('\nError: Local file "' + local_file_name + '" does NOT exist.')
     else:
-      print('\nContainer "' + container_name + '" does NOT exist.')
+      print('\nError: Blob container "' + container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)
