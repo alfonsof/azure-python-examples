@@ -44,7 +44,9 @@ def main():
       print('List of blobs in container "'+ container.name + '":')
       blobs_list = block_blob_service.list_blobs(container.name)
       for blob in blobs_list:
-        print("- Blob name: " + blob.name)
+        props = blob.properties
+        print('- Blob name: ' + blob.name)
+        print('       size: ', props.content_length)
   except Exception as e:
     print("\nError:")
     print(e)
