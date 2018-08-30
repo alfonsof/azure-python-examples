@@ -28,6 +28,10 @@ The code for the samples is contained in individual folders on this repository. 
 
 * [azureblobstoragedownload](/azureblobstoragedownload) - Azure Blob Storage Download: Example of how to handle Azure Blob Storage and Download a file from a Blob Storage container in an Azure storage account.
 
+* [azureblobstoragecopy](/azureblobstoragecopy) - Azure Blob Storage Copy: Example of how to handle Azure Blob Storage and copy a Blob from a Blob Storage container to another one in an Azure storage account.
+
+* [azureblobstoragemove](/azureblobstoragemove) - Azure Blob Storage Move: Example of how to handle Azure Blob Storage and move a Blob from a Blob Storage container to another one in an Azure storage account.
+
 For instructions on running the code, please consult the README in each folder.
 
 ## License
