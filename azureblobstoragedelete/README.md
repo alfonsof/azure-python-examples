@@ -108,10 +108,17 @@ Delete a Blob Storage container in an Azure storage account.
   
     1. Navigate to "Storage Accounts".
     2. Select your storage account.
-    3. You can see your connection strings and get your account name and account key.
+    3. You can see your account name and account key, and get these.
 
     ```bash
-    DefaultEndpointsProtocol=https;AccountName=ACCOUNT_NAME;AccountKey=ACCOUNT_KEY;EndpointSuffix=core.windows.net
+    Storage Account name
+    ACCOUNT_NAME
+    ```
+
+    ```bash
+    key 1
+    Key
+    ACCOUNT_KEY
     ```
   
   We store the storage authentication information in a config file (`app.cfg`). The file content is:
