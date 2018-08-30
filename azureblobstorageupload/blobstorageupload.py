@@ -44,8 +44,8 @@ def main():
   print('Container:  ' + container_name)
   blob_name = args[1]
   print('Blob:       ' + blob_name)
-  upload_file_name = args[2]
-  print('Local file: ' + upload_file_name)
+  local_file_name = args[2]
+  print('Local file: ' + local_file_name)
 
   # Read storage authentication information
   config_dict = loadcfg()
@@ -57,13 +57,13 @@ def main():
 
   try:
     if block_blob_service.exists(container_name):
-      if os.path.exists(upload_file_name):
+      if os.path.exists(local_file_name):
         # Upload the local file to the Blob container
         print('Uploading a local file to a Blob Storage container ...')
-        block_blob_service.create_blob_from_path(container_name, blob_name, upload_file_name)
+        block_blob_service.create_blob_from_path(container_name, blob_name, local_file_name)
         print("\nUploaded")
       else:
-        print('\nLocal file "' + upload_file_name + '" does NOT exist.')
+        print('\nLocal file "' + local_file_name + '" does NOT exist.')
     else:
       print('\nContainer "' + container_name + '" does NOT exist.')
   except Exception as e:
