@@ -59,6 +59,7 @@ def main():
     if block_blob_service.exists(container_name):
       if os.path.exists(upload_file_name):
         # Upload the local file to the Blob container
+        print('Uploading a local file to a Blob Storage container ...')
         block_blob_service.create_blob_from_path(container_name, blob_name, upload_file_name)
         print("\nUploaded")
       else:
