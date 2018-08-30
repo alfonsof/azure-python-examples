@@ -111,12 +111,12 @@ Create a new Blob Storage container in an Azure storage account.
     3. You can see your account name and account key, and get these:
 
     ```bash
-    Storage Account name
+    Storage account name
     ACCOUNT_NAME
     ```
 
     ```bash
-    key 1
+    key1
     Key
     ACCOUNT_KEY
     ```
