@@ -108,7 +108,7 @@ List the blobs in all Blob Storage containers in an Azure storage account.
   
     1. Navigate to "Storage Accounts".
     2. Select your storage account.
-    3. You can see your account name and account key, and get these.
+    3. You can see your account name and account key, and get these:
 
     ```bash
     Storage Account name
