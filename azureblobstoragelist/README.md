@@ -150,7 +150,7 @@ List the blobs in a Blob Storage container in an Azure storage account.
   Run application:
 
   ```bash
-  python blobstoragelist.py container-name
+  python blobstoragelist.py container-example
   ```
 
 * Test the application.

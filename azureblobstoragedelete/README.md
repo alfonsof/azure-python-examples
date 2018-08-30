@@ -150,7 +150,7 @@ Delete a Blob Storage container in an Azure storage account.
   Run application:
 
   ```bash
-  python blobstoragedelete.py container-name
+  python blobstoragedelete.py container-example
   ```
 
 * Test the application.

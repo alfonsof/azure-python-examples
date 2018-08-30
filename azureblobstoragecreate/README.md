@@ -150,7 +150,7 @@ Create a new Blob Storage container in an Azure storage account.
   Run application:
 
   ```bash
-  python blobstoragecreate.py container-name
+  python blobstoragecreate.py container-example
   ```
 
 * Test the application.
