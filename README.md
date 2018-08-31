@@ -14,6 +14,10 @@ You must have an Azure storage account for the Azure Blob Storage examples.
 
 The code for the samples is contained in individual folders on this repository. You can see the list:
 
+**Compute - Azure Virtual Machines:**
+
+* [azurevm](/azurevm) - Azure Virtual Machines: Example of how to handle Azure Virtual Machines.
+
 **Storage - Azure Blob Storage:**
 
 * [azureblobstoragecreate](/azureblobstoragecreate) - Azure Blob Storage Create: Example of how to handle Azure Blob Storage and create a new Blob Storage container in an Azure storage account.
