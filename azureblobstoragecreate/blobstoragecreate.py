@@ -34,7 +34,7 @@ def main():
   # which is the script itself.
   args = sys.argv[1:]
   if len(args) < 1:
-    print('Not enough parameters. Proper Usage is: python blobstoragecreate.py <CONTAINER_NAME>')
+    print('Not enough parameters.\nProper Usage is: python blobstoragecreate.py <CONTAINER_NAME>')
     sys.exit(1)
 
   container_name = args[0]

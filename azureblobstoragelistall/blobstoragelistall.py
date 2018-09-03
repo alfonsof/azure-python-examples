@@ -41,7 +41,7 @@ def main():
     containers_list = block_blob_service.list_containers()
     for container in containers_list:
       # List the blobs in the container
-      print('List of blobs in container "'+ container.name + '":')
+      print('List of blobs in Blob Storage container "'+ container.name + '":')
       blobs_list = block_blob_service.list_blobs(container.name)
       for blob in blobs_list:
         props = blob.properties

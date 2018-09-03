@@ -37,7 +37,7 @@ def main():
   # which is the script itself.
   args = sys.argv[1:]
   if len(args) < 3:
-    print('Not enough parameters. Proper Usage is: python blobstoragemove.py <SOURCE_CONTAINER> <SOURCE_BLOB> <DESTINATION_CONTAINER>')
+    print('Not enough parameters.\nProper Usage is: python blobstoragemove.py <SOURCE_CONTAINER> <SOURCE_BLOB> <DESTINATION_CONTAINER>')
     sys.exit(1)
 
   source_container_name = args[0]
@@ -60,7 +60,7 @@ def main():
     if block_blob_service.exists(source_container_name):
       if block_blob_service.exists(source_container_name, source_blob_name):
         if block_blob_service.exists(dest_container_name):
-          print('Moving a Blob from a Blob container to another one ...')
+          print('Moving a Blob from a Blob Storage container to another one ...')
           # Get blob url: https://storageaccountname.blob.core.windows.net/containername/blobname
           source_blob_url = block_blob_service.make_blob_url(source_container_name, source_blob_name)
           # Copy Blob
@@ -73,11 +73,11 @@ def main():
           block_blob_service.delete_blob(source_container_name, source_blob_name)
           print('\nMoved')
         else:
-          print('\nError: Destination Blob container "' + source_container_name + '" does NOT exist.')
+          print('\nError: Destination Blob Storage container "' + source_container_name + '" does NOT exist.')
       else:
         print('\nError: Blob "' + source_blob_name + '" does NOT exist.')
     else:
-      print('\nError: Source Blob container "' + source_container_name + '" does NOT exist.')
+      print('\nError: Source Blob Storage container "' + source_container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)

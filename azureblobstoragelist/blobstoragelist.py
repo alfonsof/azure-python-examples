@@ -34,7 +34,7 @@ def main():
   # which is the script itself.
   args = sys.argv[1:]
   if len(args) < 1:
-    print('Not enough parameters. Proper Usage is: python blobstoragelist.py <CONTAINER_NAME>')
+    print('Not enough parameters.\nProper Usage is: python blobstoragelist.py <CONTAINER_NAME>')
     sys.exit(1)
 
   container_name = args[0]
@@ -51,14 +51,14 @@ def main():
   try:
     # List the blobs in the container
     if block_blob_service.exists(container_name):
-      print('List of blobs in container "'+ container_name + '":')
+      print('List of blobs in Blob Storage container "'+ container_name + '":')
       blobs_list = block_blob_service.list_blobs(container_name)
       for blob in blobs_list:
         props = blob.properties
         print('- Blob name: ' + blob.name)
         print('       size: ', props.content_length)
     else:
-      print('\nError: Blob container "' + container_name + '" does NOT exist.')
+      print('\nError: Blob Storage container "' + container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)

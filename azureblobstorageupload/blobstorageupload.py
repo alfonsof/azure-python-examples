@@ -37,7 +37,7 @@ def main():
   # which is the script itself.
   args = sys.argv[1:]
   if len(args) < 3:
-    print('Not enough parameters. Proper Usage is: python blobstorageupload.py <CONTAINER_NAME> <BLOB_NAME> <LOCAL_FILE_NAME>')
+    print('Not enough parameters.\nProper Usage is: python blobstorageupload.py <CONTAINER_NAME> <BLOB_NAME> <LOCAL_FILE_NAME>')
     sys.exit(1)
 
   container_name = args[0]
@@ -65,7 +65,7 @@ def main():
       else:
         print('\nError: Local file "' + local_file_name + '" does NOT exist.')
     else:
-      print('\nError: Blob container "' + container_name + '" does NOT exist.')
+      print('\nError: Blob Storage container "' + container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)

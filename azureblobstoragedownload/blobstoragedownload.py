@@ -37,7 +37,7 @@ def main():
   # which is the script itself.
   args = sys.argv[1:]
   if len(args) < 3:
-    print('Not enough parameters. Proper Usage is: python blobstoragedownload.py <CONTAINER_NAME> <BLOB_NAME> <LOCAL_FILE_NAME>')
+    print('Not enough parameters.\nProper Usage is: python blobstoragedownload.py <CONTAINER_NAME> <BLOB_NAME> <LOCAL_FILE_NAME>')
     sys.exit(1)
 
   container_name = args[0]
@@ -59,13 +59,13 @@ def main():
     if block_blob_service.exists(container_name):
       if block_blob_service.exists(container_name, blob_name):
         # Download the blob to a local file
-        print('Downloading an object from a Blob Storage to a local file ...')
+        print('Downloading a Blob from a Blob Storage to a local file ...')
         block_blob_service.get_blob_to_path(container_name, blob_name, local_file_name)
         print("\nDownloaded")
       else:
         print('\nError: Blob "' + blob_name + '" does NOT exist.')
     else:
-      print('\nError: Blob container "' + container_name + '" does NOT exist.')
+      print('\nError: Blob Storage container "' + container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)

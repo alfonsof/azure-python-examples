@@ -34,7 +34,7 @@ def main():
   # which is the script itself.
   args = sys.argv[1:]
   if len(args) < 1:
-    print('Not enough parameters. Proper Usage is: python blobstoragedelete.py <CONTAINER_NAME>')
+    print('Not enough parameters.\nProper Usage is: python blobstoragedelete.py <CONTAINER_NAME>')
     sys.exit(1)
 
   container_name = args[0]
@@ -55,7 +55,7 @@ def main():
       block_blob_service.delete_container(container_name)
       print('\nDeleted')
     else:
-      print('\nError: Blob container "' + container_name + '" does NOT exist.')
+      print('\nError: Blob Storage container "' + container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)

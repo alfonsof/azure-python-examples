@@ -37,7 +37,7 @@ def main():
   # which is the script itself.
   args = sys.argv[1:]
   if len(args) < 3:
-    print('Not enough parameters. Proper Usage is: python blobstoragecopy.py <SOURCE_CONTAINER> <SOURCE_BLOB> <DESTINATION_CONTAINER>')
+    print('Not enough parameters.\nProper Usage is: python blobstoragecopy.py <SOURCE_CONTAINER> <SOURCE_BLOB> <DESTINATION_CONTAINER>')
     sys.exit(1)
 
   source_container_name = args[0]
@@ -71,11 +71,11 @@ def main():
             copy = block_blob_service.get_blob_properties(dest_container_name, dest_blob_name).properties.copy
           print('\nCopied')
         else:
-          print('\nError: Destination Blob container "' + source_container_name + '" does NOT exist.')
+          print('\nError: Destination Blob Storage container "' + source_container_name + '" does NOT exist.')
       else:
         print('\nError: Blob "' + source_blob_name + '" does NOT exist.')
     else:
-      print('\nError: Source Blob container "' + source_container_name + '" does NOT exist.')
+      print('\nError: Source Blob Storage container "' + source_container_name + '" does NOT exist.')
   except Exception as e:
     print("\nError:")
     print(e)
