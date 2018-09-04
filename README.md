@@ -12,7 +12,11 @@ You must have a [Microsoft Azure](https://azure.microsoft.com/) subscription.
 
 You must have an Azure storage account for the Azure Blob Storage examples.
 
-The code for the samples is contained in individual folders on this repository. You can see the list:
+The code for the samples is contained in individual folders on this repository.
+
+For instructions on running the code, please consult the README in each folder.
+
+This is the list of examples:
 
 **Compute - Azure Virtual Machines:**
 
@@ -28,8 +32,6 @@ The code for the samples is contained in individual folders on this repository. 
 * [azureblobstoragedownload](/azureblobstoragedownload) - Azure Blob Storage Download: Example of how to handle Azure Blob Storage and Download a Blob from a Blob Storage container in an Azure storage account.
 * [azureblobstoragecopy](/azureblobstoragecopy) - Azure Blob Storage Copy: Example of how to handle Azure Blob Storage and copy a Blob from a Blob Storage container to another one in an Azure storage account.
 * [azureblobstoragemove](/azureblobstoragemove) - Azure Blob Storage Move: Example of how to handle Azure Blob Storage and move a Blob from a Blob Storage container to another one in an Azure storage account.
-
-For instructions on running the code, please consult the README in each folder.
 
 ## License
 
