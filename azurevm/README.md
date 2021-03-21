@@ -5,9 +5,11 @@ This folder contains a Python application example that handles Virtual Machines 
 ## Requirements
 
 * You must have a [Microsoft Azure](https://azure.microsoft.com/) subscription.
+
 * The code was written for:
   * Python 3
   * Azure SDKs for Python
+
 * Install the Azure SDKs for Python.
 
   Install the latest stable version (supports Python 2.7 and 3.x) via pip:

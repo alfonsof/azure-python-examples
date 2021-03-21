@@ -7,10 +7,13 @@ Copy a Blob from a Blob Storage container to another Blob Storage container in a
 ## Requirements
 
 * You must have a [Microsoft Azure](https://azure.microsoft.com/) subscription.
+
 * You must have an Azure storage account.
+
 * The code was written for:
   * Python 3
   * Azure SDKs for Python
+
 * Install the Azure SDKs for Python.
 
   Install the latest stable version (supports Python 2.7 and 3.x) via pip:
