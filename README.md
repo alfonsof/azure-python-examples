@@ -22,6 +22,10 @@ This is the list of examples:
 
 * [azurevm](/azurevm) - Azure Virtual Machines: Example of how to handle Azure Virtual Machines.
 
+**Compute - Azure Functions:**
+
+* [azurefunctionhttprequest](/azurefunctionhttprequest) - Azure Function HTTP Request: Example of how to handle an Azure Function that responds to an HTTP request.
+
 **Storage - Azure Blob Storage:**
 
 * [azureblobstoragecreate](/azureblobstoragecreate) - Azure Blob Storage Create: Example of how to handle Azure Blob Storage and create a new Blob Storage container in an Azure storage account.
