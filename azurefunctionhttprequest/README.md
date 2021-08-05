@@ -47,6 +47,7 @@ It handles an Azure Function that responds to an HTTP request.
        # if upgrading on a machine that has 2.x installed
        brew link --overwrite azure-functions-core-tools@3
        ```
+
     3. If you don't plan to use extension bundles, install the .NET Core 3.x SDK for macOS.
 
 ## Using the code
@@ -69,6 +70,8 @@ It handles an Azure Function that responds to an HTTP request.
   * `local.settings.json` - It stores app settings, connection strings, and settings used by local development tools. Settings in the local.settings.json file are used only when you're running projects locally.
   * `requirements.txt` - File with python dependencies.
 
+  Because `local.settings.json` can contain secrets downloaded from Azure, the file is excluded from source control by default in the `.gitignore` file.
+
 * Create the Azure Function
   
   In the terminal window or from a command prompt, move to the folder for your project, and run the following command:
@@ -84,8 +87,8 @@ It handles an Azure Function that responds to an HTTP request.
   Then, the function `HttpTrigger` is created successfully from the `HTTP trigger` template.
 
   The `HttpTrigger` folder content is:
-    * `__init__.py` - Code of the function.
-    * `function.json` - Configuration of the function.
+  * `__init__.py` - Code of the function.
+  * `function.json` - Configuration of the function.
 
 * Run your function project locally
 
@@ -144,7 +147,7 @@ It handles an Azure Function that responds to an HTTP request.
   To publish your local code to a function app in Azure, use the publish command:
 
   ```bash
-  func azure functionapp publish <FUNCTION_APP_NAME>
+  func azure functionapp publish <FUNCTION_APP>
   ```
 
   When the deploy is complete, you see the URL that you can use to access your Azure Function App:
