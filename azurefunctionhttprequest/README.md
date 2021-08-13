@@ -52,43 +52,70 @@ It handles an Azure Function that responds to an HTTP request.
 
 ## Using the code
 
-* Create an Azure Functions project
+* Create the Azure Funtion project and the Azure Function (Boilerplate code)
+
+  The Azure Functions Core Tools help you to create the boilerplate code for the Azure Funtion project and the Azure Function:
   
-  In the terminal window or from a command prompt, navigate to an empty folder for your project, and run the following command:
-
-  ```bash
-  func init azurefunctionhttprequest
-  ```
-
-  In version 3.x/2.x, when you run the command you must choose a runtime for your project.
-
-  Select `python`
-
-  Then, the project is created with these files:
-
-  * `host.json` - JSON configuration file.
-  * `local.settings.json` - It stores app settings, connection strings, and settings used by local development tools. Settings in the local.settings.json file are used only when you're running projects locally.
-  * `requirements.txt` - File with python dependencies.
-
-  Because `local.settings.json` can contain secrets downloaded from Azure, the file is excluded from source control by default in the `.gitignore` file.
-
-* Create the Azure Function
+  * Create an Azure Functions project
   
-  In the terminal window or from a command prompt, move to the folder for your project, and run the following command:
+    In the terminal window or from a command prompt, navigate to an empty folder for your project, and run the following command:
 
-  ```bash
-  func new
-  ```
+    ```bash
+    func init azurefunctionhttprequest
+    ```
 
-  Select `HTTP trigger`
+    In version 3.x/2.x, when you run the command you must choose a runtime for your project.
 
-  Select the name `HttpTrigger`.
-  
-  Then, the function `HttpTrigger` is created successfully from the `HTTP trigger` template.
+    Select `python`
 
-  The `HttpTrigger` folder content is:
-  * `__init__.py` - Code of the function.
-  * `function.json` - Configuration of the function.
+    Then, the project is created with these files:
+
+    * `host.json` - JSON configuration file for the Function App.
+    * `local.settings.json` - It stores app settings, connection strings, and settings used by local development tools. Settings in the local.settings.json file are used only when you are running projects locally.
+    * `requirements.txt` - File with python dependencies.
+
+    *Because `local.settings.json` can contain secrets downloaded from Azure, the file is excluded from source control by default in the `.gitignore` file.*
+
+  * Create the Azure Function
+
+    In the terminal window or from a command prompt, move to the folder for your project, and run the following command:
+
+    ```bash
+    func new
+    ```
+
+    Select `HTTP trigger`
+
+    Select the name `HttpTrigger`.
+
+    Then, the function `HttpTrigger` is created successfully from the `HTTP trigger` template.
+
+    The `HttpTrigger` folder content is:
+
+    * `__init__.py` - Code of the function.
+    * `function.json` - Configuration of the function.
+
+* Create the Function App
+
+  1. You must create a Storage Account for the Function App, using the Azure console.
+
+  2. You must create the Function App. You can create it in two ways:
+
+      * Using the Azure console.
+
+      * Using the Azure CLI tool:
+
+        You create the Azure Function App by executing the command:
+
+        ```bash
+        az functionapp create --functions-version 3 --resource-group <RESOURCE_GROUP> --os-type Linux --consumption-plan-location westeurope --runtime python --name <FUNCTION_APP> --storage-account <STORAGE_ACCOUNT>
+        ```
+
+        In the previous command, replace with the proper:
+
+        * `<RESOURCE_GROUP>` - Resource group name.
+        * `<FUNCTION_APP>` - Function App name.
+        * `<STORAGE_ACCOUNT>`- Storage Account name.
 
 * Run your function project locally
 
@@ -114,28 +141,6 @@ It handles an Azure Function that responds to an HTTP request.
 
   To stop debugging, use Ctrl-C in the terminal.
 
-* Create the Function App
-
-  You must create an Storage Account for the Function App, using the Azure console.
-
-  You must create the Function App. You can create it in two ways:
-
-  * Using the Azure console.
-
-  * Using the Azure CLI:
-  
-    You create the Azure Function App by executing the command:
-
-    ```bash
-    az functionapp create --functions-version 3 --resource-group <RESOURCE_GROUP> --os-type Linux --consumption-plan-location westeurope --runtime python --name <FUNCTION_APP> --storage-account <STORAGE_ACCOUNT>
-    ```
-
-    Select the proper:
-
-    * `<RESOURCE_GROUP>` - Resource group name.
-    * `<FUNCTION_APP>` - Function App name.
-    * `<STORAGE_ACCOUNT>`- Storage Account name.
-
 * Deploy the function to Azure
 
   The deploy process to Azure Functions uses account credentials from the Azure CLI. Log in with the Azure CLI before continuing.
@@ -153,7 +158,6 @@ It handles an Azure Function that responds to an HTTP request.
   When the deploy is complete, you see the URL that you can use to access your Azure Function App:
 
   ```bash
-  ..................
   Remote build succeeded!
   Syncing triggers...
   Functions in <FUNCTION_APP>:
