@@ -2,7 +2,7 @@
 
 This folder contains a Python application example that handles Functions on Microsoft Azure.
 
-It handles an Azure Function that responds to an Blob Storage event (trigger).
+It handles an Azure Function that responds to a Blob Storage event (trigger) when a blob appears in blob storage.
 
 ## Requirements
 
