@@ -25,7 +25,7 @@ This is the list of examples:
 **Compute - Azure Functions:**
 
 * [azurefunctionhttprequest](/azurefunctionhttprequest) - Azure Function HTTP Request: Example of how to handle an Azure Function that responds to an HTTP request.
-* [azurefunctionblobevent](/azurefunctionblobevent) - Azure Function Blob Storage event: Example of how to handle an Azure Function that responds to a Blob Storage event (trigger) when a blob appears in blob storage.
+* [azurefunctionblobevent](/azurefunctionblobevent) - Azure Function Blob Storage event: Example of how to handle an Azure Function that responds to a Blob Storage event (trigger) when a blob appears in a blob storage.
 * [azurefunctionblobcopy](/azurefunctionblobcopy) - Azure Function Blob Storage copy: Example of how to handle an Azure Function that responds to a Blob Storage event (trigger) and copy the blob when it appears in a blob storage to another blob storage.
 
 **Storage - Azure Blob Storage:**
