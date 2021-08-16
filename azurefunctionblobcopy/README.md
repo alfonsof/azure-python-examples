@@ -145,7 +145,7 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) and
         "connection": "MY_STORAGE_OUT"
         ```
 
-      The `name` variable, in the `function.json` file, will hold the name of the file found in the blob container, while `inputblob` variable will hold the actual contents of the file, and the `outputblob` variable will hold the output file.
+      The `name` variable, in the `function.json` file, will hold the name of the file found in the blob container, while `myblob` variable will hold the actual contents of the file, and the `outputblob` variable will hold the output file.
 
   2. You must configure the connection strings or secrets for trigger, input sources and output target map to values in:
   
@@ -210,15 +210,17 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) and
 
   The runtime will waiting for a blob event (trigger).
 
-  You can upload a file to the container and you will get the message with the result.
+  Upload a file to the source blob storage container in the storage account.
 
-  Example:
+  The file from the source blob storage container should be copied to the target blob storage container.
+
+  You should see the next message in the log:
   
   ```bash
   Python blob trigger function processed blob
-  Name: samples-workitems/<FILE_NAME>
+  Blob Name: samples-workitems/<FILE_NAME>
   Blob Size: <XX> bytes
-  Full Blob URI: https://<STORAGE_ACCOUNT_IN>.blob.core.windows.net/samples-workitems/<FILE_NAME>
+  Blob URI: https://<STORAGE_ACCOUNT_IN>.blob.core.windows.net/samples-workitems/<FILE_NAME>
   Trigger function processed <XX> bytes
   Copied
   ```
@@ -259,9 +261,9 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) and
   
   ```bash
   Python blob trigger function processed blob
-  Name: samples-workitems/<FILE_NAME>
+  Blob Name: samples-workitems/<FILE_NAME>
   Blob Size: <XX> bytes
-  Full Blob URI: https://<STORAGE_ACCOUNT_IN>.blob.core.windows.net/samples-workitems/<FILE_NAME>
+  Blob URI: https://<STORAGE_ACCOUNT_IN>.blob.core.windows.net/samples-workitems/<FILE_NAME>
   Trigger function processed <XX> bytes
   Copied
   ```
