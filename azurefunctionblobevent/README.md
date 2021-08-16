@@ -191,7 +191,7 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) whe
   
   ```bash
   Python blob trigger function processed blob
-  Name: samples-workitems/<FILE_NAME>
+  Blob Name: samples-workitems/<FILE_NAME>
   Blob Size: <XX> bytes
   ```
 
@@ -229,6 +229,6 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) whe
   
   ```bash
   Python blob trigger function processed blob
-  Name: samples-workitems/<FILE_NAME>
+  Blob Name: samples-workitems/<FILE_NAME>
   Blob Size: <XX> bytes
   ```
