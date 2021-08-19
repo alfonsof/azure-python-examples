@@ -54,6 +54,8 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) whe
 
 * Create the Azure Funtion project and the Azure Function (Boilerplate code)
 
+  *This step is only necessary when you want to create an Azure Function from scratch.*
+
   The Azure Functions Core Tools help you to create the boilerplate code for the Azure Funtion project and the Azure Function:
 
   * Create an Azure Functions project
@@ -185,9 +187,9 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) whe
 
   The runtime will waiting for a blob event (trigger).
 
-  You can upload a file to the container and you will get the message with the result.
+  Upload a file to the blob storage container in the storage account.
 
-  Example:
+  You should see the next message in the log:
   
   ```bash
   Python blob trigger function processed blob
