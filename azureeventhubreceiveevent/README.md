@@ -1,4 +1,4 @@
-# Azure Event Hub receiver event Python example
+# Azure Event Hub receive event Python example
 
 This folder contains a Python application example that handles Event Hubs on Microsoft Azure.
 
