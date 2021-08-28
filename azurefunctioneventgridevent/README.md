@@ -52,13 +52,13 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
 
 ## Using the code
 
-* Create the Azure Funtion project and the Azure Function (Boilerplate code)
+* Create the Azure Funtion project and the Azure Function (Boilerplate code).
 
   *This step is only necessary when you want to create an Azure Function from scratch.*
 
   The Azure Functions Core Tools help you to create the boilerplate code for the Azure Funtion project and the Azure Function:
 
-  * Create an Azure Functions project
+  * Create an Azure Functions project.
 
     In the terminal window or from a command prompt, navigate to an empty folder for your project, and run the following command:
 
@@ -68,7 +68,7 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
 
     In version 3.x/2.x, when you run the command you must choose a runtime for your project.
 
-    Select `python`
+    Select `python`.
 
     Then, the project is created with these files:
 
@@ -78,7 +78,7 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
 
     *Because `local.settings.json` can contain secrets downloaded from Azure, the file is excluded from source control by default in the `.gitignore` file.*
 
-  * Create the Azure Function
+  * Create the Azure Function.
 
     In the terminal window or from a command prompt, move to the folder for your project, and run the following command:
 
@@ -86,7 +86,7 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
     func new
     ```
 
-    Select `Azure Event Grid trigger`
+    Select `Azure Event Grid trigger`.
 
     Select the name `EventGridTrigger`.
 
@@ -97,7 +97,7 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
     * `__init__.py` - Code of the function.
     * `function.json` - Configuration of the function.
 
-* Create the Function App
+* Create the Function App.
 
   1. You must create a Storage Account for the Function App, using the Azure console.
 
@@ -119,13 +119,13 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
         * `<FUNCTION_APP>` - Function App name.
         * `<STORAGE_ACCOUNT>`- Storage Account name.
 
-* Configure the Azure Function
+* Configure the Azure Function.
 
   The `function.json` file is configurated.
 
   The variable `name`, in the `function.json`, will hold the parameter that receives the event data.
 
-* Deploy the function to Azure
+* Deploy the function to Azure.
 
   The deploy process to Azure Functions uses account credentials from the Azure CLI. Log in with the Azure CLI before continuing.
 
