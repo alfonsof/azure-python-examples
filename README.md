@@ -45,8 +45,8 @@ This is the list of examples:
 
 **Messaging - Azure Event Grid, Azure Event Hub:**
 
-* [azureeventhubsendevent](/azureeventhubsendevent) - Azure Event Hub send: Example of how to handle an Event Hub and send events to an event hub event stream.
-* [azureeventhubreceiveevent](/azureeventhubreceiveevent) - Azure Event Hub receive: Example of how to handle an Event Hub and  receive events from an event hub event stream.
+* [azureeventhubsendevent](/azureeventhubsendevent) - Azure Event Hub send event: Example of how to handle an Event Hub and send events to an event hub event stream.
+* [azureeventhubreceiveevent](/azureeventhubreceiveevent) - Azure Event Hub receive event: Example of how to handle an Event Hub and  receive events from an event hub event stream.
 
 ## License
 
