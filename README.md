@@ -29,6 +29,7 @@ This is the list of examples:
 * [azurefunctionblobcopy](/azurefunctionblobcopy) - Azure Function Blob Storage copy: Example of how to handle an Azure Function that responds to a Blob Storage event (trigger) and copy the blob when it appears in a blob storage to another blob storage.
 * [azurefunctionblobmove](/azurefunctionblobmove) - Azure Function Blob Storage move: Example of how to handle an Azure Function that responds to a Blob Storage event (trigger) and move the blob when it appears in a blob storage to another blob storage.
 * [azurefunctioneventgridevent](/azurefunctioneventgridevent) - Azure Function Event Grid event: Example of how to handle an Azure Function that responds to an Event Grid event (trigger) when an event is sent to an Event Grid topic.
+* [azurefunctioneventhubevent](/azurefunctioneventhunevent) - Azure Function Event Hub event: Example of how to handle an Azure Function that responds to an Event Hub event (trigger) when an event is sent to an event hub event stream.
 
 **Storage - Azure Blob Storage:**
 
