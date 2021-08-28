@@ -2,7 +2,7 @@
 
 This folder contains a Python application example that handles Event Hubs on Microsoft Azure.
 
-It handles an Event Hub and sends events to an event hub event stream.
+It handles an Event Hub and send events to an event hub event stream.
 
 ## Requirements
 
