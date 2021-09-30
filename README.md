@@ -43,8 +43,9 @@ This is the list of examples:
 * [azureblobstoragecopy](/azureblobstoragecopy) - Azure Blob Storage Copy: Example of how to handle Azure Blob Storage and copy a Blob from a Blob Storage container to another one in an Azure storage account.
 * [azureblobstoragemove](/azureblobstoragemove) - Azure Blob Storage Move: Example of how to handle Azure Blob Storage and move a Blob from a Blob Storage container to another one in an Azure storage account.
 
-**Messaging - Azure Event Grid, Azure Event Hub:**
+**Messaging and Event Services - Azure Event Grid, Azure Event Hub:**
 
+* [azureeventgridsendevent](/azureeventgridsendevent) - Azure Event Grid send event: Example of how to handle an Event Grid and send events to an Event Grid Topic.
 * [azureeventhubsendevent](/azureeventhubsendevent) - Azure Event Hub send event: Example of how to handle an Event Hub and send events to an event hub event stream.
 * [azureeventhubreceiveevent](/azureeventhubreceiveevent) - Azure Event Hub receive event: Example of how to handle an Event Hub and  receive events from an event hub event stream.
 
