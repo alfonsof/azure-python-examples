@@ -12,6 +12,7 @@ It handles an Azure Function that responds to an HTTP request.
   * Python 3
 
 * To develop functions app with Python, you must have the following installed:
+  * Python 3
   * Azure CLI
   * Azure Functions Core Tools Version 3.x
 
@@ -52,13 +53,13 @@ It handles an Azure Function that responds to an HTTP request.
 
 ## Using the code
 
-* Create the Azure Funtion project and the Azure Function (Boilerplate code)
+* Create the Azure Funtion project and the Azure Function (Boilerplate code).
 
   *This step is only necessary when you want to create an Azure Function from scratch.*
 
   The Azure Functions Core Tools help you to create the boilerplate code for the Azure Funtion project and the Azure Function:
   
-  * Create an Azure Functions project
+  * Create an Azure Functions project.
   
     In the terminal window or from a command prompt, navigate to an empty folder for your project, and run the following command:
 
@@ -78,7 +79,7 @@ It handles an Azure Function that responds to an HTTP request.
 
     *Because `local.settings.json` can contain secrets downloaded from Azure, the file is excluded from source control by default in the `.gitignore` file.*
 
-  * Create the Azure Function
+  * Create the Azure Function.
 
     In the terminal window or from a command prompt, move to the folder for your project, and run the following command:
 
@@ -97,7 +98,7 @@ It handles an Azure Function that responds to an HTTP request.
     * `__init__.py` - Code of the function.
     * `function.json` - Configuration of the function.
 
-* Create the Function App
+* Create the Function App.
 
   1. You must create a Storage Account for the Function App, using the Azure console.
 
@@ -119,7 +120,7 @@ It handles an Azure Function that responds to an HTTP request.
         * `<FUNCTION_APP>` - Function App name.
         * `<STORAGE_ACCOUNT>`- Storage Account name.
 
-* Run your function project locally
+* Run your function project locally.
 
   You can run your function locally.
   
@@ -143,7 +144,7 @@ It handles an Azure Function that responds to an HTTP request.
 
   To stop debugging, use Ctrl-C in the terminal.
 
-* Deploy the function to Azure
+* Deploy the Azure Function to Azure.
 
   The deploy process to Azure Functions uses account credentials from the Azure CLI. Log in with the Azure CLI before continuing.
 

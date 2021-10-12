@@ -12,6 +12,7 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
   * Python 3
 
 * To develop functions app with Python, you must have the following installed:
+  * Python 3
   * Azure CLI
   * Azure Functions Core Tools Version 3.x
 
@@ -97,27 +98,41 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
     * `__init__.py` - Code of the function.
     * `function.json` - Configuration of the function.
 
-* Create the Function App.
+* Create an Event Hubs Namespace and an Event Hub.
 
-  1. You must create a Storage Account for the Function App, using the Azure console.
+  1. Create an Event Hubs Namespace.
 
-  2. You must create the Function App. You can create it in two ways:
+     An Event Hubs namespace provides a unique scoping container, in which you create one or more event hubs.
 
-      * Using the Azure console.
+     To create a namespace in your resource group using the portal, do the following actions:
 
-      * Using the Azure CLI tool:
+     1. You must create the Event Hubs Namespace, using the Azure console.
 
-        You create the Azure Function App by executing the command:
+     2. Select the your data for: Suscription, Resource group, Namespace name and Location.
 
-        ```bash
-        az functionapp create --functions-version 3 --resource-group <RESOURCE_GROUP> --os-type Linux --consumption-plan-location westeurope --runtime python --name <FUNCTION_APP> --storage-account <STORAGE_ACCOUNT>
-        ```
+     3. Choose Basic for the pricing tier.
 
-        In the previous command, replace with the proper:
+  2. Create an Event Hub.
 
-        * `<RESOURCE_GROUP>` - Resource group name.
-        * `<FUNCTION_APP>` - Function App name.
-        * `<STORAGE_ACCOUNT>`- Storage Account name.
+     You must create the Event Hub, using the Azure console.
+
+     To create an event hub within the namespace, do the following actions:
+
+     1. On the Event Hubs Namespace page, select `Event Hubs` in the left menu.
+
+     2. At the top of the window, select `+ Event Hub`.
+
+     3. Type a name for your event hub, then select `Create`.
+
+  3. Create a SAS Policy.
+
+     You must create the SAS Policy, using the Azure console.
+
+     1. On the Event Hubs page for the Event Hub created, select `Shared access policies` in the left menu.
+
+     2. At the top of the window, select `+ Add`.
+
+     3. Type a name for your Policy, select `Manage`, that includes `Send` and `Listen`, then select `Create`.
 
 * Configure the Azure Function.
 
@@ -155,11 +170,13 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
 
           Go to your Function App.
 
-          Select: `Settings > Configuration > Application settings`
+          Select: `Settings > Configuration > Application settings > + New application setting`
 
           Set the setting `MY_EVENT_HUB_IN` name to:
   
           `Endpoint=sb://<EVENT_HUB_NAMESPACE>.servicebus.windows.net/;SharedAccessKeyName=<EVENT_HUB_SAS_POLICY>;SharedAccessKey=<EVENT_HUB_KEY>`
+
+          Select `Save`.
 
         * Using the Azure CLI.
 
@@ -173,7 +190,29 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
         * `<EVENT_HUB_SAS_POLICY>` - Event Hub SAS Policy.
         * `<EVENT_HUB_KEY>` - Key of the Event Hub.
 
-* Deploy the function to Azure.
+* Create the Function App.
+
+  1. You must create a Storage Account for the Function App, using the Azure console.
+
+  2. You must create the Function App. You can create it in two ways:
+
+      * Using the Azure console.
+
+      * Using the Azure CLI tool:
+
+        You create the Azure Function App by executing the command:
+
+        ```bash
+        az functionapp create --functions-version 3 --resource-group <RESOURCE_GROUP> --os-type Linux --consumption-plan-location westeurope --runtime python --name <FUNCTION_APP> --storage-account <STORAGE_ACCOUNT>
+        ```
+
+        In the previous command, replace with the proper:
+
+        * `<RESOURCE_GROUP>` - Resource group name.
+        * `<FUNCTION_APP>` - Function App name.
+        * `<STORAGE_ACCOUNT>`- Storage Account name.
+
+* Deploy the Azure Function to Azure.
 
   The deploy process to Azure Functions uses account credentials from the Azure CLI. Log in with the Azure CLI before continuing.
 
@@ -196,42 +235,6 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
   Functions in <FUNCTION_APP>:
       EventHubTrigger - [eventHubTrigger]
   ```
-
-* Create an Event Hubs Namespace and an Event Hub.
-
-  1. Create an Event Hubs Namespace.
-
-     An Event Hubs namespace provides a unique scoping container, in which you create one or more event hubs.
-
-     To create a namespace in your resource group using the portal, do the following actions:
-
-     1. You must create the Event Hubs Namespace, using the Azure console.
-
-     2. Select the your data for: Suscription, Resource group, Namespace name and Location.
-
-     3. Choose Basic for the pricing tier.
-
-  2. Create an Event Hub.
-
-     You must create the Event Hub, using the Azure console.
-
-     To create an event hub within the namespace, do the following actions:
-
-     1. On the Event Hubs Namespace page, select `Event Hubs` in the left menu.
-
-     2. At the top of the window, select `+ Event Hub`.
-
-     3. Type a name for your event hub, then select `Create`.
-
-  3. Create a SAS Policy.
-
-     You must create the SAS Policy, using the Azure console.
-
-     1. On the Event Hubs page for the Event Hub created, select `Shared access policies` in the left menu.
-
-     2. At the top of the window, select `+ Add`.
-
-     3. Type a name for your Policy, select `Manage`, that includes `Send` and `Listen`, then select `Create`.
 
 * Test the function.
 

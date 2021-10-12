@@ -12,6 +12,7 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
   * Python 3
 
 * To develop functions app with Python, you must have the following installed:
+  * Python 3
   * Azure CLI
   * Azure Functions Core Tools Version 3.x
 
@@ -97,6 +98,12 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
     * `__init__.py` - Code of the function.
     * `function.json` - Configuration of the function.
 
+* Configure the Azure Function.
+
+  The `function.json` file is configurated.
+
+  The variable `name`, in the `function.json`, will hold the parameter that receives the event data.
+
 * Create the Function App.
 
   1. You must create a Storage Account for the Function App, using the Azure console.
@@ -119,13 +126,7 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
         * `<FUNCTION_APP>` - Function App name.
         * `<STORAGE_ACCOUNT>`- Storage Account name.
 
-* Configure the Azure Function.
-
-  The `function.json` file is configurated.
-
-  The variable `name`, in the `function.json`, will hold the parameter that receives the event data.
-
-* Deploy the function to Azure.
+* Deploy the Azure Function to Azure.
 
   The deploy process to Azure Functions uses account credentials from the Azure CLI. Log in with the Azure CLI before continuing.
 
