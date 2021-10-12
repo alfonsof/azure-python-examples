@@ -58,25 +58,7 @@ Delete a Blob Storage container in an Azure storage account.
 
 * Configure your storage account.
 
-  An Azure storage account provides a unique namespace to store and access your Azure Storage data objects.
-  
-  There are two types of storage accounts:
-  
-  * A general-purpose storage account gives you access to Azure Storage services such as Tables, Queues, Files, Blobs and Azure virtual machine disks under a single account.
-
-  * A Blob storage account is a specialized storage account for storing your unstructured data as blobs (objects) in Azure Storage.
-    Blob storage accounts are similar to a existing general-purpose storage accounts and share all the great durability, availability,
-    scalability, and performance features that you use today including 100% API consistency for block blobs and append blobs.
-
-    For applications requiring only block or append blob storage, it is recommend using Blob storage accounts.
-
-    Blob storage accounts expose the Access Tier attribute which can be specified during account creation and modified later as needed.
-
-    There are two types of access tiers that can be specified based on your data access pattern:
-    * A Hot access tier which indicates that the objects in the storage account will be more frequently accessed.
-      This allows you to store data at a lower access cost.
-    * A Cool access tier which indicates that the objects in the storage account will be less frequently accessed.
-      This allows you to store data at a lower data storage cost.
+  An Azure storage account contains all of your Azure Storage data objects: blobs, file shares, queues, tables, and disks. The storage account provides a unique namespace for your Azure Storage data that's accessible from anywhere in the world over HTTP or HTTPS. Data in your storage account is durable and highly available, secure, and massively scalable.
   
   An storage account can content containers and every container can content blobs.
 
