@@ -54,11 +54,19 @@ It handles an Event Grid and sends events to an Event Grid Topic.
     AZURE_AUTH_LOCATION = /path/to/my.azureauth
     ```
 
-* Create a custom topic (Event Grid Topic).
+* Create an Event Grid Topic.
 
-  An event grid topic provides a user-defined endpoint that you post your events to.
+  An Event Grid topic provides a user-defined endpoint that you post your events to.
 
-  You must create the custom topic by creating an Event Grid Topic, using the Azure console.
+  You must create the Event Grid Topic, using the Azure console, do the following actions:
+
+  1. Select `Create a resource` and chose `Event Grid Topic`.
+
+  2. On the Event Grid Topics page, select `Create`.
+
+  3. Choose the `Subscription`, `Resource group`, `Name` and `Region` for your Event Grid Topic.
+
+  4. Select `Create`.
 
   You need the `Topic Key` and the `Topic Endpoint`. You can find these within the Event Grid Topic resource on the Azure portal.
 

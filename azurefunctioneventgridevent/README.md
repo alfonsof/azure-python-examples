@@ -79,7 +79,21 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
 
     *Because `local.settings.json` can contain secrets downloaded from Azure, the file is excluded from source control by default in the `.gitignore` file.*
 
-  * Create the Azure Function.
+* Create an Event Grid Topic.
+
+  An Event Grid topic provides a user-defined endpoint that you post your events to.
+
+  You must create the Event Grid Topic, using the Azure console, do the following actions:
+
+  1. Select `Create a resource` and chose `Event Grid Topic`.
+
+  2. On the Event Grid Topics page, select `Create`.
+
+  3. Choose the `Subscription`, `Resource group`, `Name` and `Region` for your Event Grid Topic.
+
+  4. Select `Create`.
+
+* Create the Azure Function.
 
     In the terminal window or from a command prompt, move to the folder for your project, and run the following command:
 
@@ -150,27 +164,25 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
       EventGridTrigger - [eventGridTrigger]
   ```
 
-* Create an Event Grid Topic and subscribe to Event Subscription.
+* Subscribe to an Event Subscription.
 
-  1. Create a custom topic (Event Grid Topic).
+  You subscribe to an event grid topic to tell Event Grid which events you want to track, and where to send the events.
 
-     You must create the custom topic by creating an Event Grid Topic, using the Azure console.
+  You must subscribe to custom topic by creating an Event Subscription, using the Azure console, do the following actions:
 
-     An event grid topic provides a user-defined endpoint that you post your events to.
+  1. Go to your Event Grid Topic resource.
 
-  2. Subscribe to custom topic (Event Subscription).
+  2. Select `+ Event Subscription`.
 
-     You must subscribe to custom topic by creating an Event Subscription, using the Azure console.
+  3. Enter a `Name` for the event subscription.
 
-     You subscribe to an event grid topic to tell Event Grid which events you want to track, and where to send the events.
+  4. Select `Azure Function` for the `Endpoint Type`.
 
-     1. Enter a `name` for the event subscription.
+  5. Choose `Select an endpoint`.
 
-     2. Select `Azure Function` for the `Endpoint type`.
-
-     3. Choose `Select an endpoint`.
-
-     4. For the function endpoint, select the Azure Subscription and Resource Group your Function App is in and then select the Function App and function you created earlier. Select `Confirm Selection`.
+  6. For the function endpoint, select the Azure `Subscription` and `Resource group` your Function App is in and then select the `Function App` and `Function` you created earlier. Select `Confirm Selection`.
+  
+  7. Select `Create`.
   
 * Test the function.
 
