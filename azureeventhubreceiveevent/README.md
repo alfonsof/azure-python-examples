@@ -135,7 +135,7 @@ It handles an Event Hub and receive events from an event hub event stream.
   Waiting for an event
   ```
 
-  The aplication is waiting for some event from the Event Hub.
+  The application is waiting for some event from the Event Hub.
 
 * Test the application.
 
