@@ -169,6 +169,17 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) and
         * `<STORAGE_ACCOUNT_OUT>`- Storage Account name for output target.
         * `<ACCOUNT_KEY_OUT>` - Account Key of the Storage Account for output target.
 
+        You must define the `AzureWebJobsStorage` variable in the `local.settings.json` file:
+
+        ```bash
+        "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_NAME>;AccountKey=<STORAGE_ACCOUNT_KEY>;EndpointSuffix=core.windows.net",
+        ```
+
+        Replace with the proper:
+
+        * `<STORAGE_ACCOUNT_NAME>` - Name of the Storage Account.
+        * `<STORAGE_ACCOUNT_KEY>` - Key of the Storage Account.
+
       * The application settings for the Function App when running in Azure.
 
         You can make that in two ways:

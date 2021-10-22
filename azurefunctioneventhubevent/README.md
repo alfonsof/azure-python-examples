@@ -98,6 +98,28 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
     * `__init__.py` - Code of the function.
     * `function.json` - Configuration of the function.
 
+* Create the Function App.
+
+  1. You must create a Storage Account for the Function App, using the Azure console.
+
+  2. You must create the Function App. You can create it in two ways:
+
+      * Using the Azure console.
+
+      * Using the Azure CLI tool:
+
+        You create the Azure Function App by executing the command:
+
+        ```bash
+        az functionapp create --functions-version 3 --resource-group <RESOURCE_GROUP> --os-type Linux --consumption-plan-location westeurope --runtime python --name <FUNCTION_APP> --storage-account <STORAGE_ACCOUNT>
+        ```
+
+        In the previous command, replace with the proper:
+
+        * `<RESOURCE_GROUP>` - Resource group name.
+        * `<FUNCTION_APP>` - Function App name.
+        * `<STORAGE_ACCOUNT>`- Storage Account name.
+
 * Create an Event Hubs Namespace and an Event Hub.
 
   1. Create an Event Hubs Namespace.
@@ -162,6 +184,17 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
         * `<EVENT_HUB_SAS_POLICY>` - Event Hub SAS Policy.
         * `<EVENT_HUB_KEY>` - Key of the Event Hub.
 
+        You must define the `AzureWebJobsStorage` variable in the `local.settings.json` file:
+
+        ```bash
+        "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_NAME>;AccountKey=<STORAGE_ACCOUNT_KEY>;EndpointSuffix=core.windows.net",
+        ```
+
+        Replace with the proper:
+
+        * `<STORAGE_ACCOUNT_NAME>` - Name of the Storage Account.
+        * `<STORAGE_ACCOUNT_KEY>` - Key of the Storage Account.
+
       * The application settings for the Function App when running in Azure.
 
         You can make that in two ways:
@@ -190,27 +223,39 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
         * `<EVENT_HUB_SAS_POLICY>` - Event Hub SAS Policy.
         * `<EVENT_HUB_KEY>` - Key of the Event Hub.
 
-* Create the Function App.
+* Run your function project locally.
 
-  1. You must create a Storage Account for the Function App, using the Azure console.
+  You can run your function locally.
+  
+  Enter the following command to run your function app:
 
-  2. You must create the Function App. You can create it in two ways:
+  ```bash
+  func start
+  ```
 
-      * Using the Azure console.
+  The runtime will waiting for a Event Hub event (trigger).
 
-      * Using the Azure CLI tool:
+  You must send an event to your Event Hub.
 
-        You create the Azure Function App by executing the command:
+  You can use the Python application `sendereh.py` (Event Hub send event). You can get it following this link: [../azureeventhubsendevent/](../azureeventhubsendevent)
 
-        ```bash
-        az functionapp create --functions-version 3 --resource-group <RESOURCE_GROUP> --os-type Linux --consumption-plan-location westeurope --runtime python --name <FUNCTION_APP> --storage-account <STORAGE_ACCOUNT>
-        ```
+  Execute the python application:
 
-        In the previous command, replace with the proper:
+  ```bash
+  python sendeh.py
+  ```
 
-        * `<RESOURCE_GROUP>` - Resource group name.
-        * `<FUNCTION_APP>` - Function App name.
-        * `<STORAGE_ACCOUNT>`- Storage Account name.
+  You should see the next message in the log:
+  
+  ```bash
+  Python EventHub trigger processed an event: <XXXXXXXXXXXXXXXXX>
+    EnqueuedTimeUtc = <YYYY-MM-DD HH:MM:SS.XXXXXXXXX>
+    SequenceNumber = <XX>
+    Offset = <XXXX>
+    Metadata: <XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>
+  ```
+
+  To stop debugging, use Ctrl-C in the terminal.
 
 * Deploy the Azure Function to Azure.
 
