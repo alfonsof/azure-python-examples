@@ -98,28 +98,6 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
     * `__init__.py` - Code of the function.
     * `function.json` - Configuration of the function.
 
-* Create the Function App.
-
-  1. You must create a Storage Account for the Function App, using the Azure console.
-
-  2. You must create the Function App. You can create it in two ways:
-
-      * Using the Azure console.
-
-      * Using the Azure CLI tool:
-
-        You create the Azure Function App by executing the command:
-
-        ```bash
-        az functionapp create --functions-version 3 --resource-group <RESOURCE_GROUP> --os-type Linux --consumption-plan-location westeurope --runtime python --name <FUNCTION_APP> --storage-account <STORAGE_ACCOUNT>
-        ```
-
-        In the previous command, replace with the proper:
-
-        * `<RESOURCE_GROUP>` - Resource group name.
-        * `<FUNCTION_APP>` - Function App name.
-        * `<STORAGE_ACCOUNT>`- Storage Account name.
-
 * Create an Event Hubs Namespace and an Event Hub.
 
   1. Create an Event Hubs Namespace.
@@ -156,6 +134,28 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
 
      3. Type a name for your Policy, select `Manage`, that includes `Send` and `Listen`, then select `Create`.
 
+* Create the Function App.
+
+  1. You must create a Storage Account for the Function App, using the Azure console.
+
+  2. You must create the Function App. You can create it in two ways:
+
+      * Using the Azure console.
+
+      * Using the Azure CLI tool:
+
+        You create the Azure Function App by executing the command:
+
+        ```bash
+        az functionapp create --functions-version 3 --resource-group <RESOURCE_GROUP> --os-type Linux --consumption-plan-location westeurope --runtime python --name <FUNCTION_APP> --storage-account <STORAGE_ACCOUNT>
+        ```
+
+        In the previous command, replace with the proper:
+
+        * `<RESOURCE_GROUP>` - Resource group name.
+        * `<FUNCTION_APP>` - Function App name.
+        * `<STORAGE_ACCOUNT>`- Storage Account name.
+
 * Configure the Azure Function.
 
   1. You must configurate the `function.json` file:
@@ -168,60 +168,30 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
 
       The variable `name`, in the `function.json`, will hold the parameter that receives the event item.
 
-  2. You must configure the connection strings or secrets for trigger, input map to values in:
-  
-      * The `local.settings.json` file when running locally.
+  2. You must configure the connection string for trigger in the `local.settings.json` file when running locally.
 
-        You must define the `MY_EVENT_HUB_IN` variable in the `local.settings.json` file:
+      You must define the `MY_EVENT_HUB_IN` variable in the `local.settings.json` file:
 
-        ```bash
-        "MY_EVENT_HUB_IN": "Endpoint=sb://<EVENT_HUB_NAMESPACE>.servicebus.windows.net/;SharedAccessKeyName=<EVENT_HUB_SAS_POLICY>;SharedAccessKey=<EVENT_HUB_KEY>",
-        ```
+      ```bash
+      "MY_EVENT_HUB_IN": "Endpoint=sb://<EVENT_HUB_NAMESPACE>.servicebus.windows.net/;SharedAccessKeyName=<EVENT_HUB_SAS_POLICY>;SharedAccessKey=<EVENT_HUB_KEY>",
+      ```
 
-        Replace with the proper:
+      Replace with the proper:
 
-        * `<EVENT_HUB_NAMESPACE>` - Event Hub namespace.
-        * `<EVENT_HUB_SAS_POLICY>` - Event Hub SAS Policy.
-        * `<EVENT_HUB_KEY>` - Key of the Event Hub.
+      * `<EVENT_HUB_NAMESPACE>` - Event Hub namespace.
+      * `<EVENT_HUB_SAS_POLICY>` - Event Hub SAS Policy.
+      * `<EVENT_HUB_KEY>` - Key of the Event Hub.
 
-        You must define the `AzureWebJobsStorage` variable in the `local.settings.json` file:
+      You must define the `AzureWebJobsStorage` variable in the `local.settings.json` file:
 
-        ```bash
-        "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_NAME>;AccountKey=<STORAGE_ACCOUNT_KEY>;EndpointSuffix=core.windows.net",
-        ```
+      ```bash
+      "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_NAME>;AccountKey=<STORAGE_ACCOUNT_KEY>;EndpointSuffix=core.windows.net",
+      ```
 
-        Replace with the proper:
+      Replace with the proper:
 
-        * `<STORAGE_ACCOUNT_NAME>` - Name of the Storage Account.
-        * `<STORAGE_ACCOUNT_KEY>` - Key of the Storage Account.
-
-      * The application settings for the Function App when running in Azure.
-
-        You can make that in two ways:
-
-        * Using the Azure console.
-
-          Go to your Function App.
-
-          Select: `Settings > Configuration > Application settings > + New application setting`
-
-          Set the setting `MY_EVENT_HUB_IN` name to:
-  
-          `Endpoint=sb://<EVENT_HUB_NAMESPACE>.servicebus.windows.net/;SharedAccessKeyName=<EVENT_HUB_SAS_POLICY>;SharedAccessKey=<EVENT_HUB_KEY>`
-
-          Select `Save`.
-
-        * Using the Azure CLI.
-
-          ```bash
-          az functionapp config appsettings set --name MyFunctionApp --resource-group MyResourceGroup --settings "MY_EVENT_HUB_IN=Endpoint=sb://<EVENT_HUB_NAMESPACE>.servicebus.windows.net/;SharedAccessKeyName=<EVENT_HUB_SAS_POLICY>;SharedAccessKey=<EVENT_HUB_KEY>"
-          ```
-
-        In both cases, replace with the proper:
-
-        * `<EVENT_HUB_NAMESPACE>` - Event Hub namespace.
-        * `<EVENT_HUB_SAS_POLICY>` - Event Hub SAS Policy.
-        * `<EVENT_HUB_KEY>` - Key of the Event Hub.
+      * `<STORAGE_ACCOUNT_NAME>` - Name of the Storage Account.
+      * `<STORAGE_ACCOUNT_KEY>` - Key of the Storage Account.
 
 * Run your function project locally.
 
@@ -280,6 +250,37 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
   Functions in <FUNCTION_APP>:
       EventHubTrigger - [eventHubTrigger]
   ```
+
+* Configure the connection string for trigger Event Hub in the Function App.
+
+  You must configure the connection strings or secrets for trigger, input map to values in the application settings for the Function App when running in Azure.
+
+  You can make that in two ways:
+
+  * Using the Azure console.
+
+    Go to your Function App.
+
+    Select: `Settings > Configuration > Application settings > + New application setting`
+
+    Set the setting `MY_EVENT_HUB_IN` name to:
+
+    `Endpoint=sb://<EVENT_HUB_NAMESPACE>.servicebus.windows.net/;SharedAccessKeyName=<EVENT_HUB_SAS_POLICY>;SharedAccessKey=<EVENT_HUB_KEY>`
+
+    Select `Save`.
+
+  * Using the Azure CLI.
+
+    ```bash
+    az functionapp config appsettings set --name MyFunctionApp --resource-group MyResourceGroup --settings "MY_EVENT_HUB_IN=Endpoint=sb://<EVENT_HUB_NAMESPACE>.servicebus.windows.net/;SharedAccessKeyName=<EVENT_HUB_SAS_POLICY>;SharedAccessKey=<EVENT_HUB_KEY>"
+    ```
+
+  In both cases, replace with the proper:
+
+  * `<EVENT_HUB_NAMESPACE>` - Event Hub namespace.
+  * `<EVENT_HUB_SAS_POLICY>` - Event Hub SAS Policy.
+  * `<EVENT_HUB_KEY>` - Key of the Event Hub.
+
 
 * Test the function.
 

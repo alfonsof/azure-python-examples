@@ -79,6 +79,25 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
 
     *Because `local.settings.json` can contain secrets downloaded from Azure, the file is excluded from source control by default in the `.gitignore` file.*
 
+  * Create the Azure Function.
+
+      In the terminal window or from a command prompt, move to the folder for your project, and run the following command:
+
+      ```bash
+      func new
+      ```
+
+      Select `Azure Event Grid trigger`.
+
+      Select the name `EventGridTrigger`.
+
+      Then, the function `EventGridTrigger` is created successfully from the `Event Grid trigger` template.
+
+      The `EventGridTrigger` folder content is:
+
+      * `__init__.py` - Code of the function.
+      * `function.json` - Configuration of the function.
+
 * Create an Event Grid Topic.
 
   An Event Grid topic provides a user-defined endpoint that you post your events to.
@@ -92,25 +111,6 @@ It handles an Azure Function that responds to an Event Grid event (trigger) when
   3. Choose the `Subscription`, `Resource group`, `Name` and `Region` for your Event Grid Topic.
 
   4. Select `Create`.
-
-* Create the Azure Function.
-
-    In the terminal window or from a command prompt, move to the folder for your project, and run the following command:
-
-    ```bash
-    func new
-    ```
-
-    Select `Azure Event Grid trigger`.
-
-    Select the name `EventGridTrigger`.
-
-    Then, the function `EventGridTrigger` is created successfully from the `Event Grid trigger` template.
-
-    The `EventGridTrigger` folder content is:
-
-    * `__init__.py` - Code of the function.
-    * `function.json` - Configuration of the function.
 
 * Configure the Azure Function.
 

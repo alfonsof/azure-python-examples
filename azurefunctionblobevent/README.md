@@ -98,6 +98,12 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) whe
     * `__init__.py` - Code of the function.
     * `function.json` - Configuration of the function.
 
+* Create a Storage Account for the input source.
+  
+  You must create the Storage Account, using the Azure console.
+  The storage account must be a StorageV2 (general purpose v2) account kind.
+  Create a blob container with the `samples-workitems` name in this Storage Account.
+
 * Create the Function App.
 
   1. You must create a Storage Account for the Function App, using the Azure console.
@@ -120,12 +126,6 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) whe
         * `<FUNCTION_APP>` - Function App name.
         * `<STORAGE_ACCOUNT>`- Storage Account name.
 
-* Create a Storage Account for the input source.
-  
-  You must create the Storage Account, using the Azure console.
-  The storage account must be a StorageV2 (general purpose v2) account kind.
-  Create a blob container with the `samples-workitems` name in this Storage Account.
-
 * Configure the Azure Function.
 
   1. You must configurate the `function.json` file:
@@ -138,54 +138,29 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) whe
 
       The `name` variable, in the `function.json` file, will hold the name of the file found in the blob container, while `myblob` variable will hold the actual contents of the file.
 
-  2. You must configure the connection strings or secrets for trigger, input map to values in:
+  2. You must configure the connection string for trigger in the `local.settings.json` file when running locally.
   
-      * The `local.settings.json` file when running locally.
+      You must define the `MY_STORAGE_IN` variable in the `local.settings.json` file:
 
-        You must define the `MY_STORAGE_IN` variable in the `local.settings.json` file:
+      ```bash
+      "MY_STORAGE_IN": "DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_IN>;AccountKey=<ACCOUNT_KEY_IN>;EndpointSuffix=core.windows.net",
+      ```
 
-        ```bash
-        "MY_STORAGE_IN": "DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_IN>;AccountKey=<ACCOUNT_KEY_IN>;EndpointSuffix=core.windows.net",
-        ```
+      Replace with the proper:
 
-        Replace with the proper:
+      * `<STORAGE_ACCOUNT_IN>` - Storage Account name for input source.
+      * `<ACCOUNT_KEY_IN>` - Account Key of the Storage Account for input source.
 
-        * `<STORAGE_ACCOUNT_IN>` - Storage Account name for input source.
-        * `<ACCOUNT_KEY_IN>` - Account Key of the Storage Account for input source.
+      You must define the `AzureWebJobsStorage` variable in the `local.settings.json` file:
 
-        You must define the `AzureWebJobsStorage` variable in the `local.settings.json` file:
+      ```bash
+      "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_NAME>;AccountKey=<STORAGE_ACCOUNT_KEY>;EndpointSuffix=core.windows.net",
+      ```
 
-        ```bash
-        "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_NAME>;AccountKey=<STORAGE_ACCOUNT_KEY>;EndpointSuffix=core.windows.net",
-        ```
+      Replace with the proper:
 
-        Replace with the proper:
-
-        * `<STORAGE_ACCOUNT_NAME>` - Name of the Storage Account.
-        * `<STORAGE_ACCOUNT_KEY>` - Key of the Storage Account.
-
-      * The application settings for the Function App when running in Azure.
-
-        You can make that in two ways:
-
-        * Using the Azure console.
-
-          Go to your Function App
-          Select: Settings > Configuration > Application settings
-
-          Set the setting `MY_STORAGE_IN` name to:
-          `DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_IN>;AccountKey=<ACCOUNT_KEY_IN>;EndpointSuffix=core.windows.net`
-
-        * Using the Azure CLI
-
-          ```bash
-          az functionapp config appsettings set --name MyFunctionApp --resource-group MyResourceGroup --settings "MY_STORAGE_IN=DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_IN>;AccountKey=<ACCOUNT_KEY_IN>;EndpointSuffix=core.windows.net"
-          ```
-
-        In both cases, replace with the proper:
-
-        * `<STORAGE_ACCOUNT_IN>`- Storage Account name for input source.
-        * `<ACCOUNT_KEY_IN>` - Account Key of the Storage Account for input source.
+      * `<STORAGE_ACCOUNT_NAME>` - Name of the Storage Account.
+      * `<STORAGE_ACCOUNT_KEY>` - Key of the Storage Account.
 
 * Run your function project locally.
 
@@ -234,6 +209,32 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) whe
   Functions in <FUNCTION_APP>:
       BlobTrigger - [blobTrigger]
   ```
+
+* Configure the connection string for trigger Blob in the Function App.
+
+  You must configure the connection strings or secrets for trigger, input map to values in the application settings for the Function App when running in Azure.
+
+  You can make that in two ways:
+
+  * Using the Azure console.
+
+    Go to your Function App.
+
+    Select: Settings > Configuration > Application settings
+
+    Set the setting `MY_STORAGE_IN` name to:
+    `DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_IN>;AccountKey=<ACCOUNT_KEY_IN>;EndpointSuffix=core.windows.net`
+
+  * Using the Azure CLI
+
+    ```bash
+    az functionapp config appsettings set --name MyFunctionApp --resource-group MyResourceGroup --settings "MY_STORAGE_IN=DefaultEndpointsProtocol=https;AccountName=<STORAGE_ACCOUNT_IN>;AccountKey=<ACCOUNT_KEY_IN>;EndpointSuffix=core.windows.net"
+    ```
+
+  In both cases, replace with the proper:
+
+  * `<STORAGE_ACCOUNT_IN>`- Storage Account name for input source.
+  * `<ACCOUNT_KEY_IN>` - Account Key of the Storage Account for input source.
 
 * Test the function.
 
