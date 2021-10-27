@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 # blobstoragelistall.py
 # It is an example that handles Blob Storage containers on Microsoft Azure.
-# List the blobs in all Blob Storage containers.
+# List information about all Blob Storage containers and the blobs they contain in an Azure storage account.
 
 import sys
 import os
 import configparser
-from azure.storage.blob import BlockBlobService, PublicAccess
+from azure.storage.blob import BlobServiceClient
 
 
-def loadcfg():
+def load_cfg():
     """
-    Read storage authentication information from a config file
+    Read storage account authentication information from a config file
     and return the values in a dictionary.
     """
     config_file = 'app.cfg'
@@ -23,33 +23,45 @@ def loadcfg():
         print('Config file "' + config_file + '" does not exist')
         sys.exit(1)
 
-    return dict(config.items('StorageAuthentication'))
+    return dict(config.items('Configuration'))
+
+
+def list_containers(storage_account_conn_str):
+    """
+    List the containers and the blobs they contain in a storage account
+    """
+    # Create the BlobServiceClient object which will be used to create a container client
+    blob_service_client = BlobServiceClient.from_connection_string(storage_account_conn_str)
+
+    try:
+        print('Listing Blob Storage containers ...')
+        # List the containers
+        container_list = blob_service_client.list_containers()
+        for container in container_list:
+            # Get the container object
+            container_client = blob_service_client.get_container_client(container)
+            # List the blobs in the container
+            print('* Blob container "' + container.name + '", list of blobs:')
+            blob_list = container_client.list_blobs()
+            for blob in blob_list:
+                print('  - Blob name: ' + blob.name)
+                print('         size: ', blob.size)
+
+    except Exception as e:
+        print("\nError:")
+        print(e)
+
+    return
 
 
 def main():
 
-    # Read storage authentication information
-    config_dict = loadcfg()
-    cfg_account_name = config_dict['accountname']
-    cfg_account_key = config_dict['accountkey']
+    # Read storage account authentication information
+    config_dict = load_cfg()
+    cfg_storage_account_conn_str = config_dict['storageaccountconnectionstring']
 
-    # Create the BlockBlockService that is used to call the Blob service for the storage account
-    block_blob_service = BlockBlobService(account_name=cfg_account_name, account_key=cfg_account_key)
-
-    try:
-        # List the containers
-        containers_list = block_blob_service.list_containers()
-        for container in containers_list:
-            # List the blobs in the container
-            print('List of blobs in Blob Storage container "'+ container.name + '":')
-            blobs_list = block_blob_service.list_blobs(container.name)
-            for blob in blobs_list:
-                props = blob.properties
-                print('- Blob name: ' + blob.name)
-                print('       size: ', props.content_length)
-    except Exception as e:
-        print("\nError:")
-        print(e)
+    # List the containers in the storage account
+    list_containers(cfg_storage_account_conn_str)
 
     return
 

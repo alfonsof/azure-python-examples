@@ -2,7 +2,7 @@
 
 This folder contains a Python application example that handles Blob storage on Microsoft Azure.
 
-List the blobs in all Blob Storage containers in an Azure storage account.
+List information about all Blob Storage containers and the blobs they contain in an Azure storage account.
 
 ## Requirements
 
@@ -14,12 +14,12 @@ List the blobs in all Blob Storage containers in an Azure storage account.
   * Python 3
   * Azure SDKs for Python
 
-* Install the Azure SDKs for Python.
+* You install individual Azure library packages on a per-project basis depending on your needs. It is recommended using Python virtual environments for each project. There is no standalone "SDK" installer for Python.
 
-  Install the latest stable version (supports Python 2.7 and 3.x) via pip:
+* Install the specified python packages.
 
   ```bash
-  pip install azure
+  pip install -r requirements.txt
   ```
 
 ## Using the code
@@ -95,26 +95,24 @@ List the blobs in all Blob Storage containers in an Azure storage account.
   
     1. Navigate to `Storage Account`.
     2. Select your storage account.
-    3. Select `Access keys` and you can see your Storage account name, connection strings and account keys.
+    3. Select `Access keys` and you can see your Storage account connection string.
 
   The connection string looks like this:
 
-    ```bash
-    DefaultEndpointsProtocol=https;AccountName=<ACCOUNT_NAME>;AccountKey=<ACCOUNT_KEY>;EndpointSuffix=core.windows.net
-    ```
+  ```bash
+  DefaultEndpointsProtocol=https;AccountName=<ACCOUNT_NAME>;AccountKey=<ACCOUNT_KEY>;EndpointSuffix=core.windows.net
+  ```
   
   The application configuration is stored in the `app.cfg` file. The file content is:
 
   ```bash
-  [StorageAuthentication]
-  AccountName=<ACCOUNT_NAME>
-  AccountKey=<ACCOUNT_KEY>
+  [Configuration]
+  StorageAccountConnectionString=<STORAGE_ACCOUNT_CONNECTION_STRING>
   ```
 
-  You must edit the `app.cfg` file and replace the values of:
+  You must edit the `app.cfg` file and replace the value of:
   
-  * `<ACCOUNT_NAME>` by the account name of your storage account.
-  * `<ACCOUNT_KEY>` by the account key of your storage account.
+  * `<STORAGE_ACCOUNT_CONNECTION_STRING>` by the connection string of your storage account.
   
   The application uses this information for accessing your Azure storage account.
 
