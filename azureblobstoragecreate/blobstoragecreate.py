@@ -9,12 +9,12 @@
 import sys
 import os
 import configparser
-from azure.storage.blob import BlockBlobService, PublicAccess
+from azure.storage.blob import BlobServiceClient
 
 
-def loadcfg():
+def load_cfg():
     """
-    Read storage authentication information from a config file
+    Read storage account authentication information from a config file
     and return the values in a dictionary.
     """
     config_file = 'app.cfg'
@@ -25,7 +25,26 @@ def loadcfg():
         print('Config file "' + config_file + '" does not exist')
         sys.exit(1)
 
-    return dict(config.items('StorageAuthentication'))
+    return dict(config.items('Configuration'))
+
+
+def create_container(storage_account_conn_str, container_name):
+    """
+    Create a new Blob Storage container
+    """
+    # Create the BlobServiceClient object which will be used to create a container client
+    blob_service_client = BlobServiceClient.from_connection_string(storage_account_conn_str)
+
+    try:
+        print('Creating container ...')
+        # Create the container
+        container_client = blob_service_client.create_container(container_name)
+        print('\nCreated')
+    except Exception as e:
+        print("\nError:")
+        print(e)
+
+    return
 
 
 def main():
@@ -41,22 +60,12 @@ def main():
     container_name = args[0]
     print('Container name: ' + container_name)
 
-    # Read storage authentication information
-    config_dict = loadcfg()
-    cfg_account_name = config_dict['accountname']
-    cfg_account_key = config_dict['accountkey']
+    # Read storage account authentication information
+    config_dict = load_cfg()
+    cfg_storage_account_conn_str = config_dict['storageaccountconnectionstring']
 
-    # Create the BlockBlockService that is used to call the Blob service for the storage account
-    block_blob_service = BlockBlobService(account_name=cfg_account_name, account_key=cfg_account_key)
-
-    try:
-        print('Creating container ...')
-        # Create the container
-        block_blob_service.create_container(container_name)
-        print('\nCreated')
-    except Exception as e:
-        print("\nError:")
-        print(e)
+    # Create a new Blob Storage container
+    create_container(cfg_storage_account_conn_str, container_name)
 
     return
 
