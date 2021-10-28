@@ -10,12 +10,12 @@
 import sys
 import os
 import configparser
-from azure.storage.blob import BlockBlobService, PublicAccess
+from azure.storage.blob import ContainerClient
 
 
-def loadcfg():
+def load_cfg():
     """
-    Read storage authentication information from a config file
+    Read storage account authentication information from a config file
     and return the values in a dictionary.
     """
     config_file = 'app.cfg'
@@ -26,7 +26,28 @@ def loadcfg():
         print('Config file "' + config_file + '" does not exist')
         sys.exit(1)
 
-    return dict(config.items('StorageAuthentication'))
+    return dict(config.items('Configuration'))
+
+
+def delete_blob(storage_account_conn_str, container_name, blob_name):
+    """
+    Delete a blob in a blob storage container in a storage account.
+    """
+    try:
+        # Create the container object
+        container_client = ContainerClient.from_connection_string(conn_str=storage_account_conn_str,
+                                                                    container_name=container_name)
+                                                                    
+        # Delete the blob in the container
+        print('Deleting blob ... ')
+        container_client.delete_blob(blob_name)
+        print('\nDeleted')
+            
+    except Exception as e:
+        print("\nError:")
+        print(e)
+
+    return
 
 
 def main():
@@ -45,28 +66,12 @@ def main():
     print('Container name: ' + container_name)
     print('Blob name: ' + blob_name)
 
-    # Read storage authentication information
-    config_dict = loadcfg()
-    cfg_account_name = config_dict['accountname']
-    cfg_account_key = config_dict['accountkey']
+    # Read storage account authentication information
+    config_dict = load_cfg()
+    cfg_storage_account_conn_str = config_dict['storageaccountconnectionstring']
 
-    # Create the BlockBlockService that is used to call the Blob service for the storage account
-    block_blob_service = BlockBlobService(account_name=cfg_account_name, account_key=cfg_account_key)
-
-    try:
-        if block_blob_service.exists(container_name):
-            if block_blob_service.exists(container_name, blob_name):
-                print('Deleting blob ...')
-                # Delete the blob
-                block_blob_service.delete_blob(container_name, blob_name)
-                print('\nDeleted')
-            else:
-                print('\nError: Blob "' + blob_name + '" does NOT exist.')
-        else:
-            print('\nError: Blob Storage container "' + container_name + '" does NOT exist.')
-    except Exception as e:
-        print("\nError:")
-        print(e)
+    # Delete a blob in a blob storage container in a storage account
+    delete_blob(cfg_storage_account_conn_str, container_name, blob_name)
 
     return
 
