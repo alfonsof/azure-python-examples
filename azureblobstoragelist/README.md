@@ -118,14 +118,14 @@ List information about the blobs in a Blob Storage container in an Azure storage
 
 * Run the code.
 
-  You must provide 1 parameter:
+  You must provide 1 parameter, replace the value of:
 
-  * `<CONTAINER_NAME>` = Name of the container
+  * `<CONTAINER_NAME>` by name of the container.
 
   Run application:
 
   ```bash
-  python blobstoragelist.py container-example
+  python blobstoragelist.py <CONTAINER_NAME>
   ```
 
 * Test the application.

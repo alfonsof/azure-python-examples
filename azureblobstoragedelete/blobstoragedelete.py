@@ -30,7 +30,7 @@ def load_cfg():
 
 def delete_container(storage_account_conn_str, container_name):
     """
-    Delete a Blob Storage container
+    Delete a Blob Storage container.
     """
     try:
         # Create the container object

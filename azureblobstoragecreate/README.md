@@ -118,14 +118,14 @@ Create a new Blob Storage container in an Azure storage account.
 
 * Run the code.
 
-  You must provide 1 parameter:
+  You must provide 1 parameter, replace the value of:
 
-  * `<CONTAINER_NAME>` = Name of the container
+  * `<CONTAINER_NAME>` by name of the container.
 
   Run application:
 
   ```bash
-  python blobstoragecreate.py container-example
+  python blobstoragecreate.py <CONTAINER_NAME>
   ```
 
 * Test the application.

@@ -30,7 +30,7 @@ def load_cfg():
 
 def create_container(storage_account_conn_str, container_name):
     """
-    Create a new Blob Storage container
+    Create a new Blob Storage container.
     """
     # Create the BlobServiceClient object which will be used to create a container client
     blob_service_client = BlobServiceClient.from_connection_string(storage_account_conn_str)

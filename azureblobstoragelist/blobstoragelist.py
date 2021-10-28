@@ -30,7 +30,7 @@ def load_cfg():
 
 def list_container_blobs(storage_account_conn_str, container_name):
     """
-    List the blobs in a container in a storage account
+    List the blobs in a container in a storage account.
     """
     try:
         # Create the container object

@@ -28,7 +28,7 @@ def load_cfg():
 
 def list_containers(storage_account_conn_str):
     """
-    List the containers and the blobs they contain in a storage account
+    List the containers and the blobs they contain in a storage account.
     """
     # Create the BlobServiceClient object which will be used to create a container client
     blob_service_client = BlobServiceClient.from_connection_string(storage_account_conn_str)
