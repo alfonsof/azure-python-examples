@@ -8,16 +8,15 @@
 # BLOB_NAME        = Blob name in the container
 # LOCAL_FILE_NAME  = Local file name
  
-
 import sys
 import os
 import configparser
-from azure.storage.blob import BlockBlobService, PublicAccess
+from azure.storage.blob import BlobServiceClient
 
 
-def loadcfg():
+def load_cfg():
     """
-    Read storage authentication information from a config file
+    Read storage account authentication information from a config file
     and return the values in a dictionary.
     """
     config_file = 'app.cfg'
@@ -28,7 +27,34 @@ def loadcfg():
         print('Config file "' + config_file + '" does not exist')
         sys.exit(1)
 
-    return dict(config.items('StorageAuthentication'))
+    return dict(config.items('Configuration'))
+
+
+def upload_blob(storage_account_conn_str, container_name, blob_name, local_file_name):
+    """
+    Upload a Blob to a blob storage container.
+    """
+    try:
+        # Create the BlobServiceClient object which will be used to create a blob client
+        blob_service_client = BlobServiceClient.from_connection_string(storage_account_conn_str)
+
+        # Create a blob client using the blob name
+        blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
+
+        if os.path.exists(local_file_name):
+            # Upload the local file to the Blob container
+            print('Uploading the local file to the Blob Storage container ...')
+            with open(local_file_name, "rb") as data:
+                blob_client.upload_blob(data)
+            print("\nUploaded")
+        else:
+            print('\nError: Local file "' + local_file_name + '" does NOT exist.')
+
+    except Exception as e:
+        print("\nError:")
+        print(e)
+
+    return
 
 
 def main():
@@ -49,28 +75,12 @@ def main():
     local_file_name = args[2]
     print('Local file: ' + local_file_name)
 
-    # Read storage authentication information
-    config_dict = loadcfg()
-    cfg_account_name = config_dict['accountname']
-    cfg_account_key = config_dict['accountkey']
+    # Read storage account authentication information
+    config_dict = load_cfg()
+    cfg_storage_account_conn_str = config_dict['storageaccountconnectionstring']
 
-    # Create the BlockBlockService that is used to call the Blob service for the storage account
-    block_blob_service = BlockBlobService(account_name=cfg_account_name, account_key=cfg_account_key)
-
-    try:
-        if block_blob_service.exists(container_name):
-            if os.path.exists(local_file_name):
-                # Upload the local file to the Blob container
-                print('Uploading a local file to a Blob Storage container ...')
-                block_blob_service.create_blob_from_path(container_name, blob_name, local_file_name)
-                print("\nUploaded")
-            else:
-                print('\nError: Local file "' + local_file_name + '" does NOT exist.')
-        else:
-            print('\nError: Blob Storage container "' + container_name + '" does NOT exist.')
-    except Exception as e:
-        print("\nError:")
-        print(e)
+    # Upload a Blob to a blob storage container
+    upload_blob(cfg_storage_account_conn_str, container_name, blob_name, local_file_name)
 
     return
 
