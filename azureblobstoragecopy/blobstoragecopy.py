@@ -12,12 +12,12 @@ import sys
 import os
 import time
 import configparser
-from azure.storage.blob import BlockBlobService, PublicAccess
+from azure.storage.blob import BlobClient, BlobLeaseClient
 
 
-def loadcfg():
+def load_cfg():
     """
-    Read storage authentication information from a config file
+    Read storage account authentication information from a config file
     and return the values in a dictionary.
     """
     config_file = 'app.cfg'
@@ -28,7 +28,63 @@ def loadcfg():
         print('Config file "' + config_file + '" does not exist')
         sys.exit(1)
 
-    return dict(config.items('StorageAuthentication'))
+    return dict(config.items('Configuration'))
+
+
+def copy_blob(storage_account_conn_str, source_container_name, source_blob_name, dest_container_name):
+    """
+    Copy a blob in a blob storage container to another blob storage container in a storage account.
+    """
+    try:
+        # Create the blob object representing the source
+        source_blob_client = BlobClient.from_connection_string(conn_str=storage_account_conn_str,
+                                                                    container_name=source_container_name,
+                                                                    blob_name=source_blob_name)
+
+        # Create the blob object representing the destination
+        dest_blob_client = BlobClient.from_connection_string(conn_str=storage_account_conn_str,
+                                                                    container_name=dest_container_name,
+                                                                    blob_name=source_blob_name)
+
+        print('Copying a Blob from a Blob container to another one ... ')
+        
+        # Lease the source blob for the copy operation
+        # to prevent another client from modifying it.
+        lease = BlobLeaseClient(source_blob_client)
+        lease.acquire()
+
+        # Get the source blob's properties and display the lease state.
+        source_props = source_blob_client.get_blob_properties()
+        print("Lease state: " + source_props.lease.state)
+
+        # Start the copy operation.
+        dest_blob_client.start_copy_from_url(source_blob_client.url)
+
+        # Get the destination blob's properties to check the copy status.
+        properties = dest_blob_client.get_blob_properties()
+        copy_props = properties.copy
+
+        # Display the copy status.
+        print("Copy status: " + copy_props["status"])
+        print("Copy progress: " + copy_props["progress"])
+        print("Completion time: " + str(copy_props["completion_time"]))
+        print("Total bytes: " + str(properties.size))
+        
+        if (source_props.lease.state == "leased"):
+            # Break the lease on the source blob.
+            lease.break_lease()
+
+            # Update the destination blob's properties to check the lease state.
+            source_props = source_blob_client.get_blob_properties()
+            print("Lease state: " + source_props.lease.state)
+
+        print('\nCopied')
+            
+    except Exception as e:
+        print("\nError:")
+        print(e)
+
+    return
 
 
 def main():
@@ -50,37 +106,12 @@ def main():
     print('Destination container name: ' + dest_container_name)
     dest_blob_name = source_blob_name
 
-    # Read storage authentication information
-    config_dict = loadcfg()
-    cfg_account_name = config_dict['accountname']
-    cfg_account_key = config_dict['accountkey']
+    # Read storage account authentication information
+    config_dict = load_cfg()
+    cfg_storage_account_conn_str = config_dict['storageaccountconnectionstring']
 
-    # Create the BlockBlockService that is used to call the Blob service for the storage account
-    block_blob_service = BlockBlobService(account_name=cfg_account_name, account_key=cfg_account_key)
-
-    try:
-        if block_blob_service.exists(source_container_name):
-            if block_blob_service.exists(source_container_name, source_blob_name):
-                if block_blob_service.exists(dest_container_name):
-                    print('Copying a Blob from a Blob container to another one ...')
-                    # Get blob url: https://storageaccountname.blob.core.windows.net/containername/blobname
-                    source_blob_url = block_blob_service.make_blob_url(source_container_name, source_blob_name)
-                    # Copy Blob
-                    copy = block_blob_service.copy_blob(dest_container_name, dest_blob_name, source_blob_url)
-                    # Poll for copy completion
-                    while copy.status != 'success':
-                        time.sleep(30)
-                        copy = block_blob_service.get_blob_properties(dest_container_name, dest_blob_name).properties.copy
-                    print('\nCopied')
-                else:
-                    print('\nError: Destination Blob Storage container "' + source_container_name + '" does NOT exist.')
-            else:
-                print('\nError: Blob "' + source_blob_name + '" does NOT exist.')
-        else:
-            print('\nError: Source Blob Storage container "' + source_container_name + '" does NOT exist.')
-    except Exception as e:
-        print("\nError:")
-        print(e)
+    # Copy a blob in a blob storage container to another blob storage container in a storage account
+    copy_blob(cfg_storage_account_conn_str, source_container_name, source_blob_name, dest_container_name)
 
     return
 
