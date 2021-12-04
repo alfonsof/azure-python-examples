@@ -11,8 +11,9 @@ List information about all Blob Storage containers and the blobs they contain in
 * You must have an Azure storage account.
 
 * The code was written for:
+
   * Python 3
-  * Azure SDKs for Python
+  * Azure SDK for Python (v12 SDK)
 
 * You install individual Azure library packages on a per-project basis depending on your needs. It is recommended using Python virtual environments for each project. There is no standalone "SDK" installer for Python.
 

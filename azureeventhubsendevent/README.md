@@ -9,8 +9,9 @@ It handles an Event Hub and send events to an event hub event stream.
 * You must have a [Microsoft Azure](https://azure.microsoft.com/) subscription.
 
 * The code was written for:
+
   * Python 3
-  * Azure SDKs for Python
+  * Azure SDK for Python (v12 SDK)
 
 * You install individual Azure library packages on a per-project basis depending on your needs. It is recommended using Python virtual environments for each project. There is no standalone "SDK" installer for Python.
 
