@@ -11,9 +11,8 @@ Download a file from a Blob Storage container in an Azure storage account.
 * You must have an Azure storage account.
 
 * The code was written for:
-
   * Python 3
-  * Azure SDK for Python (v12 SDK)
+  * Azure SDK for Python: New Client Libraries (Azure Blob Storage library v12)
 
 * You install individual Azure library packages on a per-project basis depending on your needs. It is recommended using Python virtual environments for each project. There is no standalone "SDK" installer for Python.
 

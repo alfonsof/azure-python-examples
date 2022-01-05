@@ -10,6 +10,7 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) and
 
 * The code was written for:
   * Python 3
+  * Azure SDK for Java: New Client Libraries (Azure Blob Storage library v12)
 
 * To develop functions app with Python, you must have the following installed:
   * Python 3
