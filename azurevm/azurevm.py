@@ -15,7 +15,7 @@ def print_menu():
     print('4 = Start Virtual Machine')
     print('5 = Stop Virtual Machine')
     print('6 = Restart Virtual Machine')
-    print('7 = Delete/Deallocate Virtual Machine')
+    print('7 = Deallocate/Delete Virtual Machine')
     return
 
 

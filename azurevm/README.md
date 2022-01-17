@@ -6,51 +6,61 @@ This folder contains a Python application example that handles Virtual Machines 
 
 * You must have a [Microsoft Azure](https://azure.microsoft.com/) subscription.
 
+* You must have the following installed:
+  * Python 3
+  * Azure CLI
+  
 * The code was written for:
   * Python 3
-  * Azure SDKs for Python
+  * Azure SDK for Python: New Management Libraries
+  
+* You install individual Azure library packages on a per-project basis depending on your needs. It is recommended using Python virtual environments for each project. There is no standalone "SDK" installer for Python.
 
-* Install the Azure SDKs for Python.
-
-  Install the latest stable version (supports Python 2.7 and 3.x) via pip:
+* Install the specified python packages.
 
   ```bash
-  pip install azure
+  pip install -r requirements.txt
   ```
 
 ## Using the code
 
-* Configure your Azure access.
+* Sign in Azure (Interactively).
 
-  You must create an Azure AD service principal in order to enable application to connect resources into Azure. The service principal grants your application to manage resources in your Azure subscription.
+  The Azure CLI's default authentication method for logins uses a web browser and access token to sign in.
 
-  The Azure SDKs Libraries for Java allow you to use several authentication schemes.
+  1. Run the Azure CLI login command.
 
-  The application uses an authentication file for authenticating.
+      ```bash
+      az login
+      ```
 
-  The credentials are taken from `AZURE_AUTH_LOCATION` environment variable.
+      If the CLI can open your default browser, it will do so and load an Azure sign-in page.
 
-  You can create a service principal and generate this file using Azure CLI 2.0 or using the Azure cloud shell.
+      Otherwise, open a browser page at https://aka.ms/devicelogin and enter the authorization code displayed in your terminal.
 
-  * Make sure you select your subscription by:
+      If no web browser is available or the web browser fails to open, use device code flow with az login --use-device-code.
 
-    ```bash
-    az account set --subscription <name or id>
-    ```
+  2. Sign in with your account credentials in the browser.
 
-    and you have the privileges to create service principals.
+* Configure your AZURE_SUBSCRIPTION_ID environment variable.
 
-  * Execute the following command for creating the service principal and the authentication file:
-  
-    ```bash
-    az ad sp create-for-rbac --sdk-auth > my.azureauth
-    ```
-  
-  * Set the `AZURE_AUTH_LOCATION` environment variable in your Operating System with the path of your authentication file.
+  Set the `AZURE_SUBSCRIPTION_ID` environment variable with the Microsoft Azure subscription ID.
 
-    ```bash
-    AZURE_AUTH_LOCATION = /path/to/my.azureauth
-    ```
+  To set this variable on Linux, macOS, or Unix, use `export`:
+
+  ```bash
+  export AZURE_SUBSCRIPTION_ID=<SUBSCRIPTION_ID>
+  ```
+
+  To set this variable on Windows, use `set`:
+
+  ```bash
+  set AZURE_SUBSCRIPTION_ID=<SUBSCRIPTION_ID>
+  ```
+
+  You must replace the value of:
+
+  * `<SUBSCRIPTION_ID>` by the Microsoft Azure subscription ID (Ex.: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").
 
 * Run the code.
 
