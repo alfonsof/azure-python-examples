@@ -42,6 +42,12 @@ This folder contains a Python application example that handles Virtual Machines 
 
   2. Sign in with your account credentials in the browser.
 
+  Make sure you select your subscription by:
+
+  ```bash
+  az account set --subscription <name or id>
+  ```
+
 * Configure your AZURE_SUBSCRIPTION_ID environment variable.
 
   Set the `AZURE_SUBSCRIPTION_ID` environment variable with the Microsoft Azure subscription ID.
