@@ -8,6 +8,10 @@ It handles an Event Grid and sends events to an Event Grid Topic.
 
 * You must have a [Microsoft Azure](https://azure.microsoft.com/) subscription.
 
+* You must have the following installed:
+  * Python 3
+  * Azure CLI
+
 * The code was written for:
   * Python 3
   * Azure SDK for Python: New Client Libraries (Azure Event Grid library v4)
@@ -22,37 +26,29 @@ It handles an Event Grid and sends events to an Event Grid Topic.
 
 ## Using the code
 
-* Configure your Azure access.
+* Sign in Azure (Interactively).
 
-  You must create an Azure AD service principal in order to enable application to connect resources into Azure. The service principal grants your application to manage resources in your Azure subscription.
+  The Azure CLI's default authentication method for logins uses a web browser and access token to sign in.
 
-  The Azure SDKs Libraries for Java allow you to use several authentication schemes.
+  1. Run the Azure CLI login command.
 
-  The application uses an authentication file for authenticating.
+      ```bash
+      az login
+      ```
 
-  The credentials are taken from `AZURE_AUTH_LOCATION` environment variable.
+      If the CLI can open your default browser, it will do so and load an Azure sign-in page.
 
-  You can create a service principal and generate this file using Azure CLI 2.0 or using the Azure cloud shell.
+      Otherwise, open a browser page at https://aka.ms/devicelogin and enter the authorization code displayed in your terminal.
 
-  * Make sure you select your subscription by:
+      If no web browser is available or the web browser fails to open, use device code flow with az login --use-device-code.
 
-    ```bash
-    az account set --subscription <name or id>
-    ```
+  2. Sign in with your account credentials in the browser.
 
-    and you have the privileges to create service principals.
+  Make sure you select your subscription by:
 
-  * Execute the following command for creating the service principal and the authentication file:
-  
-    ```bash
-    az ad sp create-for-rbac --sdk-auth > my.azureauth
-    ```
-  
-  * Set the `AZURE_AUTH_LOCATION` environment variable in your Operating System with the path of your authentication file.
-
-    ```bash
-    AZURE_AUTH_LOCATION = /path/to/my.azureauth
-    ```
+  ```bash
+  az account set --subscription <name or id>
+  ```
 
 * Create an Event Grid Topic.
 
