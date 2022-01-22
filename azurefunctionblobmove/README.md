@@ -8,14 +8,14 @@ It handles an Azure Function that responds to a Blob Storage event (trigger) and
 
 * You must have a [Microsoft Azure](https://azure.microsoft.com/) subscription.
 
-* The code was written for:
-  * Python 3
-  * Azure SDK for Java: New Client Libraries (Azure Blob Storage library v12)
-
 * To develop functions app with Python, you must have the following installed:
   * Python 3
   * Azure CLI
   * Azure Functions Core Tools Version 3.x
+
+* The code was written for:
+  * Python 3
+  * Azure SDK for Java: New Client Libraries (Azure Blob Storage library v12)
 
 * Azure Functions Core Tools Version 3.x
 

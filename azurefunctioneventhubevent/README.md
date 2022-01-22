@@ -8,13 +8,13 @@ It handles an Azure Function that responds to an Event Hub event (trigger) when 
 
 * You must have a [Microsoft Azure](https://azure.microsoft.com/) subscription.
 
-* The code was written for:
-  * Python 3
-
 * To develop functions app with Python, you must have the following installed:
   * Python 3
   * Azure CLI
   * Azure Functions Core Tools Version 3.x
+
+* The code was written for:
+  * Python 3
 
 * Azure Functions Core Tools Version 3.x
 
