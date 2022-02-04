@@ -20,7 +20,6 @@ SUBNET_ADDRESS_SPACE   = '10.0.0.0/24'                # Subnet address space
 PUBLIC_IP_NAME         = 'myExamplePublicIP'          # Name of the Public IP
 IP_CONFIG_NAME         = 'myExampleIPConfig'          # Name of the IP Config
 NETWORK_INTERFACE_NAME = 'myExampleNIC'               # Name of the network interface
-AVAILABILITY_SET_NAME  = 'myExampleAvailabilitySet'   # Name of the availability set
 VM_NAME                = 'myExampleVM'                # VM name
 IMAGE_PUBLISHER        = 'Canonical'                  # Image publisher
 IMAGE_OFFER            = 'UbuntuServer'               # Image offer
